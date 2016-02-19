@@ -28,6 +28,13 @@
         "ordering": true,
         "info": true,
         "autoWidth": false}
+    var $configuraDataTablePrint = {
+        "paging": false,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": false,
+        "autoWidth": false}
 </script>    
 </body>
 </html>

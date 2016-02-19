@@ -129,6 +129,13 @@ class Musica extends Model {
         $this->desconectar();
     }
 
+    public function apaga($id) {
+        $this->conectar();
+        $query = "DELETE FROM musicas WHERE id='" . $id . "';";
+        $result = $this->query($query);
+        $this->desconectar();
+    }
+
     public function gravaStatus($musica, $status) {
         $this->conectar();
         $query = "UPDATE  musicas SET  `id_status` =  '" . $status . "' WHERE  `id` =" . $musica . ";";
@@ -198,6 +205,20 @@ class Musica extends Model {
 
     public function setRecursos($recursos) {
         $this->recursos = $recursos;
+    }
+
+    public function podeApagar() {
+        $this->conectar();
+        $query = "SELECT count(*) as total FROM showsmusicas WHERE id_musica=" . $this->id . ";";
+        $result = $this->query($query);
+        $this->desconectar();
+
+        //return (count($this->recursos)==0 AND $result[0]["total"]==0);
+        if (count($this->recursos) == 0 AND $result[0]["total"] == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

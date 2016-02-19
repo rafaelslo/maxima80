@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-01-26 09:28:56
+<?php /* Smarty version Smarty-3.1.8, created on 2016-02-19 14:27:28
          compiled from ".\Templates\novoRodape.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4655569fd65d2a5038-76770967%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '26f5ca80f81e290e0b3e7359c30512b92501391c' => 
     array (
       0 => '.\\Templates\\novoRodape.tpl',
-      1 => 1453747977,
+      1 => 1455899245,
       2 => 'file',
     ),
   ),
@@ -57,6 +57,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         "searching": true,
         "ordering": true,
         "info": true,
+        "autoWidth": false}
+    var $configuraDataTablePrint = {
+        "paging": false,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": false,
         "autoWidth": false}
 </script>    
 </body>

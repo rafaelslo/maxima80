@@ -38,25 +38,37 @@ class showsController extends Controller {
 
     function detalha($id) {
         $musicas = new ListaMusicas();
-        $musicas->carrega("Livres&".$id);
+        $musicas->carrega("Livres&" . $id);
         $bloco1 = new ListaMusicas();
-        $bloco1->carrega("1#".$id);
+        $bloco1->carrega("1#" . $id);
         $bloco2 = new ListaMusicas();
-        $bloco2->carrega("2#".$id);
+        $bloco2->carrega("2#" . $id);
         $bis = new ListaMusicas();
-        $bis->carrega("3#".$id);
+        $bis->carrega("3#" . $id);
         $show = new show();
         $show->carrega($id);
-        $this->view->exibirDetalhesShow($show,$musicas->getMusicas(),$bloco1->getMusicas(),$bloco2->getMusicas(),$bis->getMusicas());
+        $this->view->exibirDetalhesShow($show, $musicas->getMusicas(), $bloco1->getMusicas(), $bloco2->getMusicas(), $bis->getMusicas());
     }
-    
+
     function setlist($parametros) {
         $show = intval(substr($parametros, 1, 3));
         $musica = intval(substr($parametros, 4, 3));
         $bloco = substr($parametros, 7, 1);
         $posicao = intval(substr($parametros, 8, 3));
         $nshow = new Show();
-        $nshow->gravaSetlist($musica, $show, $bloco,$posicao);
+        $nshow->gravaSetlist($musica, $show, $bloco, $posicao);
+    }
+
+    function imprimir($id) {
+        $bloco1 = new ListaMusicas();
+        $bloco1->carrega("1#" . $id);
+        $bloco2 = new ListaMusicas();
+        $bloco2->carrega("2#" . $id);
+        $bis = new ListaMusicas();
+        $bis->carrega("3#" . $id);
+        $show = new show();
+        $show->carrega($id);
+        $this->view->imprimirDetalhesShow($show, $bloco1->getMusicas(), $bloco2->getMusicas(), $bis->getMusicas());
     }
 
 }

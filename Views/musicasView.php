@@ -7,6 +7,11 @@ class musicasView extends View {
         $this->mostrarNaTela('musicas.tpl');
     }
 
+    public function exibirListaMusicasImprimir($musicas) {
+        $this->atribuirValor("musicas", $musicas);
+        $this->mostrarNaTela('musicasImprimir.tpl');
+    }
+
     public function exibirListaMusicasVotar($musicas) {
         $this->atribuirValor("musicas", $musicas);
         $this->mostrarNaTela('musicasVotar.tpl');

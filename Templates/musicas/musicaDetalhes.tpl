@@ -31,8 +31,14 @@
                         <TD class="label-primary">Status</TD><TD class="{$musica->getStatus()->getCor()}"> {$musica->getStatus()->getNome()} </TD>
                     </TR>
                     <TR>
-                        <TD class="label-primary">Ações</TD><TD> {include file="musicas/musicasAcoes.tpl" acao="{$musica->getStatus()->getNome()}" id="{$musica->getId()}"} </TD>
+                        <TD class="label-primary">Mudança de Status</TD><TD> {include file="musicas/musicasAcoes.tpl" acao="{$musica->getStatus()->getNome()}" id="{$musica->getId()}"} </TD>
                     </TR>
+                    {if $musica->podeApagar()}
+                        <TR>
+                            <TD class="label-primary">Ações</TD><TD> <a class="btn btn-danger" href= "{$smarty.session.baseURL}/musicas/apagarMusica/{$musica->getId()}" role="button">Apagar Música</a> </TD>
+                        </TR>
+                    {/if}
+
                 </TBODY>
             </TABLE>
         </div>

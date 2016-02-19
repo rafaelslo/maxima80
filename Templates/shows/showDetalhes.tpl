@@ -57,8 +57,8 @@
                             {/foreach}                        
                     </ul>
                 </div>
-
-
+                <BR>
+                <a class="btn btn-default btn-block" href= "{$smarty.session.baseURL}/shows/imprimir/{$show->getId()}" role="button" target="_blank">Imprimir</a>
             </div>  
         </div>
 
@@ -68,6 +68,10 @@
 {include file="novoRodape.tpl"}
 
 <script type="text/javascript">
+    $("#bloco1 span").text(calculaTempos("#sortable1"));
+    $("#bloco2 span").text(calculaTempos("#sortable2"));
+    $("#bis span").text(calculaTempos("#sortable3"));
+
     $(function() {
         $("#sortable1, #sortable2, #sortable3, #sortable4").sortable({
             connectWith: ".connectedSortable",
@@ -75,18 +79,29 @@
             cache: false,
             update: function(event, ui) {
                 //Atualiza banco de dados
-                var musica = preencheZeros(ui.item[0].id);
-                var show = preencheZeros($(".breadcrumb").attr("id"));
-                var bloco = this.id.substr(8, 1);
-                var posicao = preencheZeros(ui.item.index());
-                //console.log("{$smarty.session.baseURL}/shows/setlist/1" + show + musica + bloco + posicao);
-                $.ajax({
-                    url: "{$smarty.session.baseURL}/shows/setlist/1" + show + musica + bloco + posicao,
-                });
-                //Recalcula tempos totais
-                $("#bloco1 span").text(calculaTempos("#sortable1"));
-                $("#bloco2 span").text(calculaTempos("#sortable2"));
-                $("#bis span").text(calculaTempos("#sortable3"));
+                //console.log(event.target);
+                //console.log(event.toElement.parentNode);
+                if (event.target === event.toElement.parentNode) {
+                    var musica = preencheZeros(ui.item[0].id);
+                    var show = preencheZeros($(".breadcrumb").attr("id"));
+                    var bloco = this.id.substr(8, 1);
+                    var posicao = preencheZeros(ui.item.index());
+                    console.log("{$smarty.session.baseURL}/shows/setlist/1" + show + musica + bloco + posicao);
+                    $.ajax({
+                        url: "{$smarty.session.baseURL}/shows/setlist/1" + show + musica + bloco + posicao,
+                    }).done(function() {
+                        console.log("success");
+                    }).fail(function() {
+                        if ($(this).hasClass("cancel")) {
+                            $(this).sortable("cancel");
+                        }
+                        console.log("error");
+                    });
+                    //Recalcula tempos totais
+                    $("#bloco1 span").text(calculaTempos("#sortable1"));
+                    $("#bloco2 span").text(calculaTempos("#sortable2"));
+                    $("#bis span").text(calculaTempos("#sortable3"));
+                }
             }
 
         }).disableSelection();

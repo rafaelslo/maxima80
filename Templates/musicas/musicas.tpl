@@ -25,6 +25,7 @@
                         <TH> Nome </TH>
                         <TH> Banda </TH>
                         <TH> Duração </TH>
+                        <TH> Recursos </TH>
                         <TH> Status </TH>
                     </tr>
                 </thead>
@@ -35,6 +36,7 @@
                             <TD><a href="{$smarty.session.baseURL}/musicas/detalha/{$musica->getId()}">{$musica->getNome()}</a></TD>
                             <TD>{$musica->getBanda()} </TD>
                             <TD>{$musica->getDuracao()} </TD>
+                            <TD>{$musica->getRecursos()->countRecursos()} </TD>
                             <TD class="{$musica->getStatus()->getCor()}">{$musica->getStatus()->getNome()} </TD>
                         </TR>
                     {/foreach}
@@ -45,6 +47,7 @@
                         <TH> Nome </TH>
                         <TH> Banda </TH>
                         <TH> Duração </TH>
+                        <TH> Recursos </TH>
                         <TH> Status </TH>
                     </tr>
                 </tfoot>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-01-21 09:21:26
+<?php /* Smarty version Smarty-3.1.8, created on 2016-02-19 13:30:57
          compiled from ".\Templates\musicas\musicas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2818856a0bf36a61a29-22370553%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '71bf6b2d414d05f93618112dc0068649e84e592e' => 
     array (
       0 => '.\\Templates\\musicas\\musicas.tpl',
-      1 => 1453222796,
+      1 => 1455895854,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_56a0bf36ce6f44_33615398',
   'variables' => 
   array (
     'musicas' => 0,
     'musica' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_56a0bf36ce6f44_33615398',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56a0bf36ce6f44_33615398')) {function content_56a0bf36ce6f44_33615398($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("novoCabecalho.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('titulo'=>"Lista de Músicas",'musicasActive'=>"active"), 0);?>
 
@@ -52,6 +52,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <TH> Nome </TH>
                         <TH> Banda </TH>
                         <TH> Duração </TH>
+                        <TH> Recursos </TH>
                         <TH> Status </TH>
                     </tr>
                 </thead>
@@ -72,6 +73,8 @@ $_smarty_tpl->tpl_vars['musica']->_loop = true;
  </TD>
                             <TD><?php echo $_smarty_tpl->tpl_vars['musica']->value->getDuracao();?>
  </TD>
+                            <TD><?php echo $_smarty_tpl->tpl_vars['musica']->value->getRecursos()->countRecursos();?>
+ </TD>
                             <TD class="<?php echo $_smarty_tpl->tpl_vars['musica']->value->getStatus()->getCor();?>
 "><?php echo $_smarty_tpl->tpl_vars['musica']->value->getStatus()->getNome();?>
  </TD>
@@ -84,6 +87,7 @@ $_smarty_tpl->tpl_vars['musica']->_loop = true;
                         <TH> Nome </TH>
                         <TH> Banda </TH>
                         <TH> Duração </TH>
+                        <TH> Recursos </TH>
                         <TH> Status </TH>
                     </tr>
                 </tfoot>

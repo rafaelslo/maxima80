@@ -26,6 +26,7 @@
                     <li><a href="{$smarty.session.baseURL}/musicas/prontas">Prontas</a></li>
                     <li><a href="{$smarty.session.baseURL}/musicas/preparacao">Preparação</a></li>
                     <li><a href="{$smarty.session.baseURL}/musicas/formIncluirMusica"><i class="fa fa-plus"></i> Adicionar Música</a></li>
+                    <li><a href="{$smarty.session.baseURL}/musicas/imprimirMusicas" target="_blank"><i class="fa fa-print"></i> Imprimir Músicas</a></li>
                 </ul>
             </li>
             <li class="treeview {$bandasActive}">

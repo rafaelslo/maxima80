@@ -23,6 +23,12 @@ class musicasController extends Controller {
         $musicas->carrega("Todas");
         $this->view->exibirListaMusicas($musicas->getMusicas());
     }
+    
+    function imprimirMusicas() {
+        $musicas = new ListaMusicas();
+        $musicas->carrega("Todas");
+        $this->view->exibirListaMusicasImprimir($musicas->getMusicas());
+    }    
 
     function detalha($id) {
         $musica = new Musica();
@@ -83,6 +89,14 @@ class musicasController extends Controller {
         $this->view->exibirListaMusicas($musicas->getMusicas());
     }
 
+    function apagarMusica($id) {
+        $musica = new musica();
+        $resultado = $musica->apaga($id);
+        $musicas = new ListaMusicas();
+        $musicas->carrega("Todas");
+        $this->view->exibirListaMusicas($musicas->getMusicas());
+    }
+    
     function formIncluirRecurso($musica) {
         $this->view->exibirFormIncluirRecurso($musica);
     }

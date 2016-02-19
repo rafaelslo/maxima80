@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-01-20 13:42:43
+<?php /* Smarty version Smarty-3.1.8, created on 2016-02-19 10:28:38
          compiled from ".\Templates\login\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:346569faaf3549f37-37335008%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '047d68504bfd9fd0b2adf0ef1495be4175aa4545' => 
     array (
       0 => '.\\Templates\\login\\login.tpl',
-      1 => 1453304154,
+      1 => 1455884916,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_569faaf3766211_80958367',
   'variables' => 
   array (
     'titulo' => 0,
+    'mensagem' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_569faaf3766211_80958367',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_569faaf3766211_80958367')) {function content_569faaf3766211_80958367($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -79,6 +80,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
                     </div>
                 </form>
+                <?php if ($_smarty_tpl->tpl_vars['mensagem']->value!=''){?>
+                    <BR><p class="login-box-msg label-danger"><?php echo $_smarty_tpl->tpl_vars['mensagem']->value;?>
+</p>
+                <?php }?>
 
             </div><!-- /.login-box-body -->
         </div><!-- /.login-box -->

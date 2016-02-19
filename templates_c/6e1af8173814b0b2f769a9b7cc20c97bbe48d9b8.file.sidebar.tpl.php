@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-01-26 09:47:21
+<?php /* Smarty version Smarty-3.1.8, created on 2016-02-19 14:29:45
          compiled from ".\Templates\sidebar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:30734569fd65d069fc2-53531310%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6e1af8173814b0b2f769a9b7cc20c97bbe48d9b8' => 
     array (
       0 => '.\\Templates\\sidebar.tpl',
-      1 => 1453808838,
+      1 => 1455899383,
       2 => 'file',
     ),
   ),
@@ -59,6 +59,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 /musicas/preparacao">Preparação</a></li>
                     <li><a href="<?php echo $_SESSION['baseURL'];?>
 /musicas/formIncluirMusica"><i class="fa fa-plus"></i> Adicionar Música</a></li>
+                    <li><a href="<?php echo $_SESSION['baseURL'];?>
+/musicas/imprimirMusicas" target="_blank"><i class="fa fa-print"></i> Imprimir Músicas</a></li>
                 </ul>
             </li>
             <li class="treeview <?php echo $_smarty_tpl->tpl_vars['bandasActive']->value;?>

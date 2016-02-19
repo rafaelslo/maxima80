@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-01-25 13:55:58
+<?php /* Smarty version Smarty-3.1.8, created on 2016-02-19 16:05:50
          compiled from ".\Templates\shows\showDetalhes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:285156a0ce5c6c0065-55550148%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '589af1ff552e22a141c7e6c63afd5f77359e5a83' => 
     array (
       0 => '.\\Templates\\shows\\showDetalhes.tpl',
-      1 => 1453737356,
+      1 => 1455905143,
       2 => 'file',
     ),
   ),
@@ -120,8 +120,10 @@ $_smarty_tpl->tpl_vars['pronta']->_loop = true;
                             <?php } ?>                        
                     </ul>
                 </div>
-
-
+                <BR>
+                <a class="btn btn-default btn-block" href= "<?php echo $_SESSION['baseURL'];?>
+/shows/imprimir/<?php echo $_smarty_tpl->tpl_vars['show']->value->getId();?>
+" role="button" target="_blank">Imprimir</a>
             </div>  
         </div>
 
@@ -132,6 +134,10 @@ $_smarty_tpl->tpl_vars['pronta']->_loop = true;
 
 
 <script type="text/javascript">
+    $("#bloco1 span").text(calculaTempos("#sortable1"));
+    $("#bloco2 span").text(calculaTempos("#sortable2"));
+    $("#bis span").text(calculaTempos("#sortable3"));
+
     $(function() {
         $("#sortable1, #sortable2, #sortable3, #sortable4").sortable({
             connectWith: ".connectedSortable",
@@ -139,20 +145,31 @@ $_smarty_tpl->tpl_vars['pronta']->_loop = true;
             cache: false,
             update: function(event, ui) {
                 //Atualiza banco de dados
-                var musica = preencheZeros(ui.item[0].id);
-                var show = preencheZeros($(".breadcrumb").attr("id"));
-                var bloco = this.id.substr(8, 1);
-                var posicao = preencheZeros(ui.item.index());
-                //console.log("<?php echo $_SESSION['baseURL'];?>
+                //console.log(event.target);
+                //console.log(event.toElement.parentNode);
+                if (event.target === event.toElement.parentNode) {
+                    var musica = preencheZeros(ui.item[0].id);
+                    var show = preencheZeros($(".breadcrumb").attr("id"));
+                    var bloco = this.id.substr(8, 1);
+                    var posicao = preencheZeros(ui.item.index());
+                    console.log("<?php echo $_SESSION['baseURL'];?>
 /shows/setlist/1" + show + musica + bloco + posicao);
-                $.ajax({
-                    url: "<?php echo $_SESSION['baseURL'];?>
+                    $.ajax({
+                        url: "<?php echo $_SESSION['baseURL'];?>
 /shows/setlist/1" + show + musica + bloco + posicao,
-                });
-                //Recalcula tempos totais
-                $("#bloco1 span").text(calculaTempos("#sortable1"));
-                $("#bloco2 span").text(calculaTempos("#sortable2"));
-                $("#bis span").text(calculaTempos("#sortable3"));
+                    }).done(function() {
+                        console.log("success");
+                    }).fail(function() {
+                        if ($(this).hasClass("cancel")) {
+                            $(this).sortable("cancel");
+                        }
+                        console.log("error");
+                    });
+                    //Recalcula tempos totais
+                    $("#bloco1 span").text(calculaTempos("#sortable1"));
+                    $("#bloco2 span").text(calculaTempos("#sortable2"));
+                    $("#bis span").text(calculaTempos("#sortable3"));
+                }
             }
 
         }).disableSelection();

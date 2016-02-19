@@ -30,6 +30,11 @@ class ListaRecursos extends Model {
     public function setRecursos($recursos) {
         $this->recursos = $recursos;
     }
+    
+    public function countRecursos() {
+        return count($this->recursos);
+    }
+    
 
 }
 

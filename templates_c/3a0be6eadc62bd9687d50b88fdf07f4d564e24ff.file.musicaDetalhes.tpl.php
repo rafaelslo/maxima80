@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-01-22 15:50:13
+<?php /* Smarty version Smarty-3.1.8, created on 2016-02-19 15:24:14
          compiled from ".\Templates\musicas\musicaDetalhes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2048856a0c267193370-21721737%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3a0be6eadc62bd9687d50b88fdf07f4d564e24ff' => 
     array (
       0 => '.\\Templates\\musicas\\musicaDetalhes.tpl',
-      1 => 1453485011,
+      1 => 1455902642,
       2 => 'file',
     ),
   ),
@@ -64,9 +64,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
  </TD>
                     </TR>
                     <TR>
-                        <TD class="label-primary">Ações</TD><TD> <?php echo $_smarty_tpl->getSubTemplate ("musicas/musicasAcoes.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('acao'=>($_smarty_tpl->tpl_vars['musica']->value->getStatus()->getNome()),'id'=>($_smarty_tpl->tpl_vars['musica']->value->getId())), 0);?>
+                        <TD class="label-primary">Mudança de Status</TD><TD> <?php echo $_smarty_tpl->getSubTemplate ("musicas/musicasAcoes.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('acao'=>($_smarty_tpl->tpl_vars['musica']->value->getStatus()->getNome()),'id'=>($_smarty_tpl->tpl_vars['musica']->value->getId())), 0);?>
  </TD>
                     </TR>
+                    <?php if ($_smarty_tpl->tpl_vars['musica']->value->podeApagar()){?>
+                        <TR>
+                            <TD class="label-primary">Ações</TD><TD> <a class="btn btn-danger" href= "<?php echo $_SESSION['baseURL'];?>
+/musicas/apagarMusica/<?php echo $_smarty_tpl->tpl_vars['musica']->value->getId();?>
+" role="button">Apagar Música</a> </TD>
+                        </TR>
+                    <?php }?>
+
                 </TBODY>
             </TABLE>
         </div>

@@ -11,14 +11,22 @@ class showsView extends View {
         $this->mostrarNaTela('formIncluirShow.tpl');
     }
 
-    public function exibirDetalhesShow($show,$prontas,$bloco1,$bloco2,$bis) {
+    public function exibirDetalhesShow($show, $prontas, $bloco1, $bloco2, $bis) {
         $this->atribuirValor("show", $show);
         $this->atribuirValor("prontas", $prontas);
         $this->atribuirValor("bloco1", $bloco1);
         $this->atribuirValor("bloco2", $bloco2);
         $this->atribuirValor("bis", $bis);
         $this->mostrarNaTela('showDetalhes.tpl');
-    }    
+    }
+
+    public function imprimirDetalhesShow($show, $bloco1, $bloco2, $bis) {
+        $this->atribuirValor("show", $show);
+        $this->atribuirValor("bloco1", $bloco1);
+        $this->atribuirValor("bloco2", $bloco2);
+        $this->atribuirValor("bis", $bis);
+        $this->mostrarNaTela('showDetalhesImprimir.tpl');
+    }
 }
 
 ?>

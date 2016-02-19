@@ -46,6 +46,9 @@
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
                     </div>
                 </form>
+                {if $mensagem != ''}
+                    <BR><p class="login-box-msg label-danger">{$mensagem}</p>
+                {/if}
 
             </div><!-- /.login-box-body -->
         </div><!-- /.login-box -->

@@ -45,9 +45,9 @@ class loginController extends Controller {
         $integrante = new Integrante();
         $resp=$integrante->valida($_REQUEST);
         if(!is_bool($resp)) {
-            $retorno["MSG"] = $resp;
-            $this->view->mensagemUsuario($retorno);
-            $this->view->exibirTelaLogin();
+            //$retorno["MSG"] = $resp;
+            //$this->view->mensagemUsuario($retorno);
+            $this->view->exibirTelaLogin("Usuário ou senha inválida");
             return;
         }
 

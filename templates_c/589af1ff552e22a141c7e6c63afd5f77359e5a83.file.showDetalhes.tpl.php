@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-02-19 16:05:50
+<?php /* Smarty version Smarty-3.1.8, created on 2016-04-26 14:43:33
          compiled from ".\Templates\shows\showDetalhes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:285156a0ce5c6c0065-55550148%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '589af1ff552e22a141c7e6c63afd5f77359e5a83' => 
     array (
       0 => '.\\Templates\\shows\\showDetalhes.tpl',
-      1 => 1455905143,
+      1 => 1461692609,
       2 => 'file',
     ),
   ),
@@ -121,6 +121,17 @@ $_smarty_tpl->tpl_vars['pronta']->_loop = true;
                     </ul>
                 </div>
                 <BR>
+                <div class="btn-danger panel panel-heading panel-title hidden" id="msg">Projeto não está salvo!!! </div>
+                <form method="POST" action="<?php echo $_SESSION['baseURL'];?>
+/shows/gravaSetlist">
+                    <input type="hidden" name="id_show" value="<?php echo $_smarty_tpl->tpl_vars['show']->value->getId();?>
+">
+                    <input type="hidden" name="srtb1" id="srtb1">
+                    <input type="hidden" name="srtb2" id="srtb2">
+                    <input type="hidden" name="srtb3" id="srtb3">
+                    <button class="btn btn-default btn-block hidden" type="submit" id="grava">Gravar Alterações</button>
+                </form>
+                <BR>
                 <a class="btn btn-default btn-block" href= "<?php echo $_SESSION['baseURL'];?>
 /shows/imprimir/<?php echo $_smarty_tpl->tpl_vars['show']->value->getId();?>
 " role="button" target="_blank">Imprimir</a>
@@ -134,44 +145,25 @@ $_smarty_tpl->tpl_vars['pronta']->_loop = true;
 
 
 <script type="text/javascript">
-    $("#bloco1 span").text(calculaTempos("#sortable1"));
-    $("#bloco2 span").text(calculaTempos("#sortable2"));
-    $("#bis span").text(calculaTempos("#sortable3"));
-
+    atualizaTempos();
+    
     $(function() {
         $("#sortable1, #sortable2, #sortable3, #sortable4").sortable({
             connectWith: ".connectedSortable",
             placeholder: "list-group-item list-group-item-warning",
             cache: false,
-            update: function(event, ui) {
-                //Atualiza banco de dados
-                //console.log(event.target);
-                //console.log(event.toElement.parentNode);
-                if (event.target === event.toElement.parentNode) {
-                    var musica = preencheZeros(ui.item[0].id);
-                    var show = preencheZeros($(".breadcrumb").attr("id"));
-                    var bloco = this.id.substr(8, 1);
-                    var posicao = preencheZeros(ui.item.index());
-                    console.log("<?php echo $_SESSION['baseURL'];?>
-/shows/setlist/1" + show + musica + bloco + posicao);
-                    $.ajax({
-                        url: "<?php echo $_SESSION['baseURL'];?>
-/shows/setlist/1" + show + musica + bloco + posicao,
-                    }).done(function() {
-                        console.log("success");
-                    }).fail(function() {
-                        if ($(this).hasClass("cancel")) {
-                            $(this).sortable("cancel");
-                        }
-                        console.log("error");
-                    });
-                    //Recalcula tempos totais
-                    $("#bloco1 span").text(calculaTempos("#sortable1"));
-                    $("#bloco2 span").text(calculaTempos("#sortable2"));
-                    $("#bis span").text(calculaTempos("#sortable3"));
-                }
-            }
+            stop: function(event, ui) {
+                var sortedIDs1 = $("#sortable1").sortable( "toArray" );
+                var sortedIDs2 = $("#sortable2").sortable( "toArray" );
+                var sortedIDs3 = $("#sortable3").sortable( "toArray" );
+                $("#srtb1").val(sortedIDs1.join("#"));
+                $("#srtb2").val(sortedIDs2.join("#"));
+                $("#srtb3").val(sortedIDs3.join("#"));
+                $("#grava").removeClass('hidden');
+                $("#msg").removeClass('hidden');
+                atualizaTempos();
 
+            }
         }).disableSelection();
     });
     function calculaTempos(elemento) {
@@ -192,14 +184,23 @@ $_smarty_tpl->tpl_vars['pronta']->_loop = true;
         });
         return total;
     }
+    
+    function atualizaTempos() {
+        $("#bloco1 span").text(calculaTempos("#sortable1"));
+        $("#bloco2 span").text(calculaTempos("#sortable2"));
+        $("#bis span").text(calculaTempos("#sortable3"));    
+    }
+    
     function preencheZeros(param) {
-        if (param > 100) {
+        var numero = parseInt(param);
+        console.log("Parametro:" + numero);
+        if (numero > 99) {
             return param;
-        }
-        if (param > 10) {
+        } else if (numero > 9) {
             return "0" + param;
+        } else {
+            return "00" + param;
         }
-        return "00" + param;
     }
 </script>
 

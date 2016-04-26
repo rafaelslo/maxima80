@@ -64,38 +64,105 @@ class Show extends Model {
 
     public function grava($request) {
         $this->conectar();
-        $query = "INSERT INTO shows (`id` ,`local` ,`data`)
-VALUES (NULL ,  '" . $request["inputLocal"] . "' ,  '" . humano_date_para_mysql($request["date"]) . "');";
+        $query = "INSERT INTO shows (`id` ,`local` ,`data`) VALUES (NULL ,  '" . $request["inputLocal"] . "' ,  '" . humano_date_para_mysql($request["date"]) . "');";
         $result = $this->query($query);
         $this->desconectar();
     }
 
-    public function gravaSetlist($musica, $show, $bloco,$posicao) {
-        if ($bloco == "4") {
+    public function gravaSetlist($show, $blocoantigo, $bloconovo, $musica, $posicaoinicial, $posicaofinal) {
+        if ($bloconovo == "4") { //movimentação para a lista de músicas prontas, ie,retirada do show
             $this->conectar();
+            //retira do setlist
             $query = "DELETE FROM showsmusicas WHERE id_musica=" . $musica . " AND id_show=" . $show . " LIMIT 1 ;";
+            echo "<BR>" . $query;
+            $resultado = $this->query($query);
+            //atualiza a lista de origem
+            $query = "UPDATE  showsmusicas SET  posicao =  posicao - 1 WHERE  `posicao` >  " . $posicaoinicial . " AND `bloco` =" . $blocoantigo . " AND  `id_show` =" . $show . ";";
+            echo "<BR>" . $query;
             $resultado = $this->query($query);
             $this->desconectar();
-        } else {
+        } elseif ($bloconovo == $blocoantigo) { //mudanças dentro do mesmo bloco
             $this->conectar();
-            $query = "SELECT * FROM showsmusicas WHERE id_musica=" . $musica . " AND id_show=" . $show . ";";
-            $resultado = $this->query($query);
-            $this->desconectar();
-            if (is_bool($resultado)) {
-                $this->conectar();
-                $query = "INSERT INTO showsmusicas  (`id_musica` ,`id_show` ,`bloco` ,`posicao`) VALUES ('" . $musica . "',  '" . $show . "',  '" . $bloco . "',  '" . $posicao . "' );";
+            if ($posicaofinal > $posicaoinicial) {
+                $query = "call setOrderSameBlockUp(" . $show . "," . $bloconovo . "," . $musica . "," . $posicaofinal . ");";
+                echo "<BR>" . $query;
                 $resultado = $this->query($query);
             } else {
-                $this->conectar();
-                $query = "UPDATE  showsmusicas SET  `bloco` =  '" . $bloco . "',`posicao` =  '" . $posicao . "' WHERE  `id_musica` =" . $musica . " AND  `id_show` =" . $show . " LIMIT 1 ;";
-                echo "<BR>".$query;
-                $resultado = $this->query($query);
-                $query = "UPDATE  showsmusicas SET  posicao =  posicao + 1 WHERE  `posicao` >=  " . $posicao . " AND `id_musica` <>" . $musica . " AND `bloco` =" . $bloco . " AND  `id_show` =" . $show . ";";
-                echo "<BR>".$query;
+                $query = "call setOrderSameBlockDown(" . $show . "," . $bloconovo . "," . $musica . "," . $posicaofinal . ");";
+                echo "<BR>" . $query;
                 $resultado = $this->query($query);
             }
             $this->desconectar();
+        } elseif ($blocoantigo == "4") { //origem da lista de músicas prontas, ie, entrando no show
+            $this->conectar();
+            $query = "INSERT INTO showsmusicas  (`id_musica` ,`id_show` ,`bloco` ,`posicao`) VALUES ('" . $musica . "',  '" . $show . "',  '" . $bloconovo . "',  '" . $posicaofinal . "' );";
+            echo "<BR>" . $query;
+            $resultado = $this->query($query);
+            $query = "UPDATE  showsmusicas SET  posicao =  posicao + 1 WHERE  `posicao` >=  " . $posicaofinal . " AND `id_musica` <>" . $musica . " AND `bloco` =" . $bloconovo . " AND  `id_show` =" . $show . ";";
+            echo "<BR>" . $query;
+            $resultado = $this->query($query);
+            $this->desconectar();
+        } else { //mudanças entre blocos diferentes
+            $this->conectar();
+            //Atualiza a musica, trocando o bloco
+            $query = "UPDATE  showsmusicas SET  bloco =  " . $bloconovo . ", posicao =  " . $posicaofinal . " WHERE `id_show` =" . $show . " AND `id_musica` = " . $musica . ";";
+            echo "<BR>" . $query;
+            $resultado = $this->query($query);
+            //bloco de origem
+            $query = "UPDATE  showsmusicas SET  posicao =  posicao - 1 WHERE  `posicao` >  " . $posicaoinicial . " AND `bloco` =" . $blocoantigo . " AND  `id_show` =" . $show . ";";
+            echo "<BR>" . $query;
+            $resultado = $this->query($query);
+            //bloco de destino
+            $query = "call setOrderNewBlock(" . $show . "," . $bloconovo . "," . $musica . "," . $posicaofinal . ");";
+            echo "<BR>" . $query;
+            $resultado = $this->query($query);
+            $this->desconectar();
         }
+    }
+
+    public function atualizaSetlist($request) {
+        $show = $this->getId();
+        
+        //Limpa o setlist
+        $this->conectar();
+        $query = "DELETE FROM showsmusicas WHERE id_show=" . $show . ";";
+        //echo "<BR>" . $query;
+        $resultado = $this->query($query);
+
+        //Carrega o bloco 1, na ordem
+        $bloco1 = explode("#", $request["srtb1"]);
+        if ($bloco1[0] != "") {
+            $cont = 1;
+            foreach ($bloco1 as $musica) {
+                $query = "INSERT INTO showsmusicas  (`id_musica` ,`id_show` ,`bloco` ,`posicao`) VALUES ('" . $musica . "',  '" . $show . "',  '1',  '" . $cont . "' );";
+                //echo "<BR>" . $query;
+                $resultado = $this->query($query);
+                $cont++;
+            }
+        }
+        //Carrega o bloco 2, na ordem
+        $bloco2 = explode("#", $request["srtb2"]);
+        if ($bloco2[0] != "") {
+            $cont = 1;
+            foreach ($bloco2 as $musica) {
+                $query = "INSERT INTO showsmusicas  (`id_musica` ,`id_show` ,`bloco` ,`posicao`) VALUES ('" . $musica . "',  '" . $show . "',  '2',  '" . $cont . "' );";
+                //echo "<BR>" . $query;
+                $resultado = $this->query($query);
+                $cont++;
+            }
+        }
+        //Carrega o bloco 3, na ordem
+        $bloco3 = explode("#", $request["srtb3"]);
+        if ($bloco3[0] != "") {
+            $cont = 1;
+            foreach ($bloco3 as $musica) {
+                $query = "INSERT INTO showsmusicas  (`id_musica` ,`id_show` ,`bloco` ,`posicao`) VALUES ('" . $musica . "',  '" . $show . "',  '3',  '" . $cont . "' );";
+                //echo "<BR>" . $query;
+                $resultado = $this->query($query);
+                $cont++;
+            }
+        }
+        $this->desconectar();
     }
 
     public function getId() {

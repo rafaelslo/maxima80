@@ -51,12 +51,15 @@ class showsController extends Controller {
     }
 
     function setlist($parametros) {
+        echo (string)$parametros;                
         $show = intval(substr($parametros, 1, 3));
-        $musica = intval(substr($parametros, 4, 3));
-        $bloco = substr($parametros, 7, 1);
-        $posicao = intval(substr($parametros, 8, 3));
+        $blocoantigo = substr($parametros, 4, 1);
+        $bloconovo = substr($parametros, 5, 1);
+        $musica = intval(substr($parametros, 6, 3));
+        $posicaoinicial = intval(substr($parametros, 9, 3));
+        $posicaofinal = intval(substr($parametros, 12, 3));
         $nshow = new Show();
-        $nshow->gravaSetlist($musica, $show, $bloco, $posicao);
+        $nshow->gravaSetlist($show, $blocoantigo, $bloconovo, $musica, $posicaoinicial, $posicaofinal);
     }
 
     function imprimir($id) {
@@ -69,6 +72,17 @@ class showsController extends Controller {
         $show = new show();
         $show->carrega($id);
         $this->view->imprimirDetalhesShow($show, $bloco1->getMusicas(), $bloco2->getMusicas(), $bis->getMusicas());
+    }
+    
+    function gravaSetlist() {
+        if($_REQUEST["id_show"]!="") {
+        $nshow = new show();
+        $nshow->setId($_REQUEST["id_show"]);
+        $nshow->atualizaSetlist($_REQUEST);
+        $this->detalha($nshow->getId());
+        }else{
+            $this->main();
+        }
     }
 
 }

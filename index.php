@@ -4,6 +4,7 @@ if($_SERVER["SERVER_NAME"]=="maxima80.esy.es" or $_SERVER["SERVER_NAME"]=="maxim
     $_SESSION["baseURL"]="http://".$_SERVER["SERVER_NAME"];
 else
     $_SESSION["baseURL"]="http://".$_SERVER["SERVER_NAME"]."/maxima80";
+$_SESSION["baseURL"]="http://".$_SERVER["SERVER_NAME"];
 
 // adiciona as classes
 require_once("./libs/Smarty.class.php");

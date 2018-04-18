@@ -1,6 +1,6 @@
 <?php
 session_start(); //carrega as variáveis de sessão
-if($_SERVER["SERVER_NAME"]=="maxima80.esy.es")
+if($_SERVER["SERVER_NAME"]=="maxima80.esy.es" or $_SERVER["SERVER_NAME"]=="maxima80-maxima80.7e14.starter-us-west-2.openshiftapps.com")
     $_SESSION["baseURL"]="http://".$_SERVER["SERVER_NAME"];
 else
     $_SESSION["baseURL"]="http://".$_SERVER["SERVER_NAME"]."/maxima80";

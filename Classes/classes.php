@@ -18,6 +18,7 @@ class Model {
         } else {
             $this->conn = @mysqli_connect("mysql.maxima80.svc", getenv("databaseusername"), getenv("databaseuserpassword"));
             if (!$this->conn) {
+                echo "mysql.maxima80.svc"."-".getenv("databaseusername")."-".getenv("databaseuserpassword");
                 echo "Error: Unable to connect to MySQL." . PHP_EOL;
                 echo "<BR>Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
                 echo "<BR>Debugging error: " . mysqli_connect_error() . PHP_EOL;

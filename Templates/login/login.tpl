@@ -29,7 +29,7 @@
 
         <div class="login-box">
             <div class="login-logo">
-                <b>Maxima80</b>Login</a>
+                <b>Maxima801</b>Login</a>
             </div><!-- /.login-logo -->
             <div class="login-box-body">
                 <p class="login-box-msg">Inicie sua sessão</p>

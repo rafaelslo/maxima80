@@ -8,7 +8,7 @@ else
 $_SESSION["baseURL"]="http://".$_SERVER["SERVER_NAME"];
 //depois
 
-//teste
+//teste2
 
 // adiciona as classes
 require_once("./libs/Smarty.class.php");

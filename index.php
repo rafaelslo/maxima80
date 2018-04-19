@@ -6,6 +6,7 @@ else
     $_SESSION["baseURL"]="http://".$_SERVER["SERVER_NAME"]."/maxima80";
 //Antes 
 $_SESSION["baseURL"]="http://".$_SERVER["SERVER_NAME"];
+//depois
 
 // adiciona as classes
 require_once("./libs/Smarty.class.php");

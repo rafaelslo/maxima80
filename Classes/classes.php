@@ -16,14 +16,14 @@ class Model {
             $this->conn = @mysqli_connect("10.60.145.1", "root", "");
             mysqli_select_db($this->conn, "maxima80");
         } else {
-            $this->conn = @mysqli_connect("mysql.hostinger.com.br", "u206228226_m80", "9W5z5Y4QuC");
+            $this->conn = @mysqli_connect("mysql.maxima80.svc", getenv("databaseusername"), getenv("databaseuserpassword"));
             if (!$this->conn) {
                 echo "Error: Unable to connect to MySQL." . PHP_EOL;
                 echo "<BR>Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
                 echo "<BR>Debugging error: " . mysqli_connect_error() . PHP_EOL;
                 exit;
             }
-            mysqli_select_db($this->conn, "u206228226_m80");
+            mysqli_select_db($this->conn, getenv("databasename"));
         }
         if (!$this->conn) {
             printf("Can't connect to MySQL Server. Errorcode: %s\n", mysqli_connect_error());

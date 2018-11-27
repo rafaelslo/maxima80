@@ -16,7 +16,7 @@ class Model {
             $this->conn = @mysqli_connect("10.60.145.1", "root", "");
             mysqli_select_db($this->conn, "maxima80");
         } else {
-            $this->conn = @mysqli_connect("mysql.maxima80.svc", getenv("databaseusername"), getenv("databaseuserpassword"));
+            $this->conn = @mysqli_connect("mysql.hostinger.com", "u990571683_m80", "0hybOzRXM2dP");
             if (!$this->conn) {
                 echo "mysql.maxima80.svc"."-".getenv("databaseusername")."-".getenv("databaseuserpassword");
                 echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -24,7 +24,7 @@ class Model {
                 echo "<BR>Debugging error: " . mysqli_connect_error() . PHP_EOL;
                 exit;
             }
-            mysqli_select_db($this->conn, getenv("databasename"));
+            mysqli_select_db($this->conn, "u990571683_m80");
         }
         if (!$this->conn) {
             printf("Can't connect to MySQL Server. Errorcode: %s\n", mysqli_connect_error());

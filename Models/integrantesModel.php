@@ -6,10 +6,13 @@ class ListaIntegrantes extends Model {
 
     private $integrantes = array();
 
-    public function carrega() {
+    public function carrega($status = "") {
         $this->conectar();
-        $queries[] = "SELECT * FROM integrantes;";
-        $resultado = $this->query($queries);
+        $query = "SELECT * FROM integrantes;";
+        if($status<>"") {
+            $query = "SELECT * FROM integrantes WHERE status='".$status."';";
+        }
+        $resultado = $this->query($query);
         $this->desconectar();
 
         foreach ($resultado as $result) {
@@ -18,6 +21,7 @@ class ListaIntegrantes extends Model {
             $integrante->setNome($result["nome"]);
             $integrante->setSenha($result["senha"]);
             $integrante->setMail($result["email"]);
+            $integrante->setStatus($result["status"]);
             $this->addIntegrante($integrante);
         }
     }
@@ -42,6 +46,7 @@ class Integrante extends Model {
     private $nome;
     private $senha;
     private $mail;
+    private $status;
 
     /**
      * 
@@ -53,14 +58,17 @@ class Integrante extends Model {
         $result = $this->query($query);
         $this->desconectar();
 
-        if (count($result) == 0) {
+        if (!$result) {
             return "Usuário não encontrado";
         } elseif (sha1($valores["Password"]) != $result[0]["senha"]) {
-            return "senha Inválida: " . $valores["Password"] . "-" . $result[0]["senha"];
+            return "senha Inválida";
+        } elseif ($result[0]["status"]<>"Ativo") {
+            return "Usuário inativo";
         } else {
             $this->setId($result[0]["id"]);
             $this->setNome($result[0]["nome"]);
             $this->setMail($result[0]["email"]);
+            $this->setStatus($result[0]["status"]);
             return true;
         }
     }
@@ -75,9 +83,26 @@ class Integrante extends Model {
             $this->id = $result[0]["id"];
             $this->nome = $result[0]["nome"];
             $this->mail = $result[0]["email"];
+            $this->status = $result[0]["status"];
         }
     }
 
+    public function grava($request) {
+        $this->conectar();
+        $nome = explode(" ",$request["inputNome"]);
+        $query = "INSERT INTO integrantes (`id` ,`nome` ,`email` ,`senha` ,`status`)
+                VALUES (NULL ,  '" . $request["inputNome"] . "',  '" . $request["inputMail"] . "',  '" . sha1($nome[0]) . "',  'Ativo');";
+        $result = $this->query($query);
+        $this->desconectar();
+    }
+
+    public function gravaStatus($id,$status) {
+        $this->conectar();
+        $query = "UPDATE  integrantes SET  `status` =  '" . ($status?"Inativo":"Ativo") . "' WHERE  `id` =" . $id . ";";
+        $result = $this->query($query);
+        $this->desconectar();
+    }    
+    
     public function getId() {
         return $this->id;
     }
@@ -109,6 +134,14 @@ class Integrante extends Model {
     public function setMail($mail) {
         $this->mail = $mail;
     }
+    public function getStatus() {
+        return $this->status;
+    }
+
+    public function setStatus($status) {
+        $this->status = $status;
+    }
+
 
 }
 ?>

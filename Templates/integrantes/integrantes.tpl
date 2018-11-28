@@ -1,14 +1,14 @@
-{include file="novoCabecalho.tpl" titulo="Lista de Shows" showsActive="active"}
+{include file="novoCabecalho.tpl" titulo="Lista de Bandas" integrantesActive="active"}
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Shows
-            <small>Lista de Shows</small>
+            Bandas
+            <small>Lista de Integrantes</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-users"></i> Shows</a></li>
+            <li><a href="#"><i class="fa fa-user"></i> Integrantes</a></li>
             <li class="active">Lista</li>
         </ol>
     </section>
@@ -21,25 +21,25 @@
             <table id="tabela1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <TH> Código </TH>
-                        <TH> Local </TH>
-                        <TH> Data </TH>
+                        <TH> Nome </TH>
+                        <TH> e-mail </TH>
+                        <TH> Status </TH>
                     </tr>
                 </thead>
                 <tbody>
-                    {foreach $shows as $show}
+                    {foreach $integrantes as $integrante}
                         <TR>
-                            <TD>{$show->getId()} </TD>
-                            <TD><a href="{$smarty.session.baseURL}/shows/detalha/{$show->getId()}">{$show->getLocal()}</a></TD>
-                            <TD>{$show->getData()} </TD>
+                            <TD><a href="{$smarty.session.baseURL}/integrantes/detalha/{$integrante->getId()}">{$integrante->getNome()}</a></TD>
+                            <TD>{$integrante->getMail()} </TD>
+                            <TD>{$integrante->getStatus()} </TD>
                         </TR>
                     {/foreach}
                 </tbody>
                 <tfoot>
                     <tr>
-                        <TH> Código </TH>
-                        <TH> Local </TH>
-                        <TH> Data </TH>
+                        <TH> Nome </TH>
+                        <TH> e-mail </TH>
+                        <TH> Status </TH>
                     </tr>
                 </tfoot>
             </table>
@@ -52,11 +52,8 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function() {    
-        $.fn.dataTable.moment( 'DD/MM/YYYY' );
+    $(document).ready(function() {
         $('#tabela1').dataTable($configuraDataTable);
-        var table = $('#tabela1').DataTable();
-        table.order( [2, 'desc'] ).draw();
     });
 </script>
    

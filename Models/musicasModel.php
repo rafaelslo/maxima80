@@ -4,6 +4,7 @@ require_once("./Classes/classes.php");
 require_once("./Models/bandasModel.php");
 require_once("./Models/statusModel.php");
 require_once("./Models/votosModel.php");
+require_once("./Models/instrumentalModel.php");
 require_once("./Models/recursosModel.php");
 
 class ListaMusicas extends Model {
@@ -51,7 +52,9 @@ class ListaMusicas extends Model {
                 $votos = new Votos();
                 $votos->carrega($result["id"], $editavel);
                 $musica->setVotos($votos);
-
+                $inst = new ListaInstrumental();
+                $inst->carrega($result["id"]);
+                $musica->setInstrumental($inst);
                 $recursos = new ListaRecursos();
                 $recursos->carrega($result["id"]);
                 $musica->setRecursos($recursos);
@@ -92,6 +95,7 @@ class Musica extends Model {
     private $status;
     private $votos;
     private $recursos;
+    private $instrumental;
 
     public function carrega($id) {
         $this->conectar();
@@ -116,6 +120,9 @@ class Musica extends Model {
         $votos = new Votos();
         $votos->carrega($result[0]["id"], $editavel);
         $this->setVotos($votos);
+        $inst = new ListaInstrumental();
+        $inst->carrega($result[0]["id"]);
+        $this->setInstrumental($inst);
         $recursos = new ListaRecursos();
         $recursos->carrega($result[0]["id"]);
         $this->setRecursos($recursos->getRecursos());
@@ -205,6 +212,14 @@ class Musica extends Model {
 
     public function setRecursos($recursos) {
         $this->recursos = $recursos;
+    }
+
+    public function getInstrumental() {
+        return $this->instrumental;
+    }
+
+    public function setInstrumental($instrumental) {
+        $this->instrumental = $instrumental;
     }
 
     public function podeApagar() {

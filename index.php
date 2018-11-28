@@ -1,14 +1,10 @@
 <?php
 session_start(); //carrega as variáveis de sessão
-if($_SERVER["SERVER_NAME"]=="maxima80.esy.es")
+if($_SERVER["SERVER_NAME"]=="maxima80.xyz")
     $_SESSION["baseURL"]="http://".$_SERVER["SERVER_NAME"];
 else
     $_SESSION["baseURL"]="http://".$_SERVER["SERVER_NAME"]."/maxima80";
-//Antes 
-$_SESSION["baseURL"]="http://".$_SERVER["SERVER_NAME"];
-//depois
 
-//teste2
 
 // adiciona as classes
 require_once("./libs/Smarty.class.php");

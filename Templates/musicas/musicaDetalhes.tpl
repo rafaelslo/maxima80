@@ -25,7 +25,7 @@
                 </TFOOT>
                 <TBODY>
                     <TR>
-                        <TD class="label-primary">Duracao</TD><TD> {$musica->getDuracao()} </TD>
+                        <TD class="label-primary" style="width: 30%">Duracao</TD><TD> {$musica->getDuracao()} </TD>
                     </TR>
                     <TR>
                         <TD class="label-primary">Status</TD><TD class="{$musica->getStatus()->getCor()}"> {$musica->getStatus()->getNome()} </TD>
@@ -38,6 +38,20 @@
                             <TD class="label-primary">Ações</TD><TD> <a class="btn btn-danger" href= "{$smarty.session.baseURL}/musicas/apagarMusica/{$musica->getId()}" role="button">Apagar Música</a> </TD>
                         </TR>
                     {/if}
+                    <TR>
+                        <TD class="label-primary">Instrumental Específico <a class="btn btn-info btn-sm pull-right" href= "{$smarty.session.baseURL}/musicas/formIncluirInstrumental/{$musica->getId()}" role="button">Adicionar</a></TD>
+                        <TD>
+                            <table width=100%> 
+                            {foreach $musica->getInstrumental()->getInstrumental() as $inst}
+                                <TR>
+                                    <TD style="text-align: center">{$inst->getIntegrante()->getNome()}</TD>
+                                    <TD style="text-align: center"><img height="42" width="42" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getInstrumento()->getNome()}"></TD>
+                                    <TD style="text-align: center"><a class="btn btn-danger btn-sm" href= "{$smarty.session.baseURL}/musicas/removerInstrumental/{$inst->getId()}" role="button">Remover</a></TD>
+                                <TR>
+                            {/foreach}
+                            </table>
+                        </TD>
+                    </TR>
 
                 </TBODY>
             </TABLE>
@@ -48,19 +62,24 @@
             <TABLE Class="table">
                 <THEAD>
                     <tr>
-                        <TH> Rafael </TH>
-                        <TH> Rodrigo </TH>
-                        <TH> Vanio </TH>
-                        <TH> Marcio </TH>
-                        <TH> Emerson </TH>
-                    </tr>                </THEAD>
+                        {foreach $integrantes as $integ}
+                            <TH>{$integ->getNome()}</TH>
+                        {/foreach}
+                    </tr>                
+                </THEAD>
                 <TFOOT>
                 </TFOOT>
                 <TBODY>
                     <TR>
-                        {foreach $musica->getVotos()->getVotos() as $voto}
-                            <TD class="">{$voto} </TD>
-                            {/foreach}
+                        {$voto = $musica->getVotos()->getVotos()}
+                        
+                        {foreach $integrantes as $integ}
+                            {if $voto[$integ->getId()] eq ""}
+                                <TD class=""> - </TD>
+                            {else}
+                                <TD class="">{$voto[$integ->getId()]} </TD>
+                            {/if}
+                        {/foreach}
                     </TR>
                 </TBODY>
             </TABLE>

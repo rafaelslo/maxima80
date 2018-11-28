@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-02-19 15:24:14
+<?php /* Smarty version Smarty-3.1.8, created on 2018-11-28 13:24:01
          compiled from ".\Templates\musicas\musicaDetalhes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2048856a0c267193370-21721737%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3a0be6eadc62bd9687d50b88fdf07f4d564e24ff' => 
     array (
       0 => '.\\Templates\\musicas\\musicaDetalhes.tpl',
-      1 => 1455902642,
+      1 => 1543418639,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'musica' => 0,
+    'inst' => 0,
+    'integrantes' => 0,
+    'integ' => 0,
     'voto' => 0,
     'recurso' => 0,
   ),
@@ -55,7 +58,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 </TFOOT>
                 <TBODY>
                     <TR>
-                        <TD class="label-primary">Duracao</TD><TD> <?php echo $_smarty_tpl->tpl_vars['musica']->value->getDuracao();?>
+                        <TD class="label-primary" style="width: 30%">Duracao</TD><TD> <?php echo $_smarty_tpl->tpl_vars['musica']->value->getDuracao();?>
  </TD>
                     </TR>
                     <TR>
@@ -74,6 +77,32 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 " role="button">Apagar Música</a> </TD>
                         </TR>
                     <?php }?>
+                    <TR>
+                        <TD class="label-primary">Instrumental Específico <a class="btn btn-info btn-sm pull-right" href= "<?php echo $_SESSION['baseURL'];?>
+/musicas/formIncluirInstrumental/<?php echo $_smarty_tpl->tpl_vars['musica']->value->getId();?>
+" role="button">Adicionar</a></TD>
+                        <TD>
+                            <table width=100%<?php ?>> 
+                            <?php  $_smarty_tpl->tpl_vars['inst'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['inst']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['musica']->value->getInstrumental()->getInstrumental(); if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['inst']->key => $_smarty_tpl->tpl_vars['inst']->value){
+$_smarty_tpl->tpl_vars['inst']->_loop = true;
+?>
+                                <TR>
+                                    <TD style="text-align: center"><?php echo $_smarty_tpl->tpl_vars['inst']->value->getIntegrante()->getNome();?>
+</TD>
+                                    <TD style="text-align: center"><img height="42" width="42" src="<?php echo $_SESSION['baseURL'];?>
+/Templates/img/<?php echo $_smarty_tpl->tpl_vars['inst']->value->getInstrumento()->getIcone();?>
+" title="<?php echo $_smarty_tpl->tpl_vars['inst']->value->getInstrumento()->getNome();?>
+"></TD>
+                                    <TD style="text-align: center"><a class="btn btn-danger btn-sm" href= "<?php echo $_SESSION['baseURL'];?>
+/musicas/removerInstrumental/<?php echo $_smarty_tpl->tpl_vars['inst']->value->getId();?>
+" role="button">Remover</a></TD>
+                                <TR>
+                            <?php } ?>
+                            </table>
+                        </TD>
+                    </TR>
 
                 </TBODY>
             </TABLE>
@@ -84,24 +113,34 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <TABLE Class="table">
                 <THEAD>
                     <tr>
-                        <TH> Rafael </TH>
-                        <TH> Rodrigo </TH>
-                        <TH> Vanio </TH>
-                        <TH> Marcio </TH>
-                        <TH> Emerson </TH>
-                    </tr>                </THEAD>
+                        <?php  $_smarty_tpl->tpl_vars['integ'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['integ']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['integrantes']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['integ']->key => $_smarty_tpl->tpl_vars['integ']->value){
+$_smarty_tpl->tpl_vars['integ']->_loop = true;
+?>
+                            <TH><?php echo $_smarty_tpl->tpl_vars['integ']->value->getNome();?>
+</TH>
+                        <?php } ?>
+                    </tr>                
+                </THEAD>
                 <TFOOT>
                 </TFOOT>
                 <TBODY>
                     <TR>
-                        <?php  $_smarty_tpl->tpl_vars['voto'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['voto']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['musica']->value->getVotos()->getVotos(); if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['voto']->key => $_smarty_tpl->tpl_vars['voto']->value){
-$_smarty_tpl->tpl_vars['voto']->_loop = true;
+                        <?php $_smarty_tpl->tpl_vars['voto'] = new Smarty_variable($_smarty_tpl->tpl_vars['musica']->value->getVotos()->getVotos(), null, 0);?>
+                        
+                        <?php  $_smarty_tpl->tpl_vars['integ'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['integ']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['integrantes']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['integ']->key => $_smarty_tpl->tpl_vars['integ']->value){
+$_smarty_tpl->tpl_vars['integ']->_loop = true;
 ?>
-                            <TD class=""><?php echo $_smarty_tpl->tpl_vars['voto']->value;?>
+                            <?php if ($_smarty_tpl->tpl_vars['voto']->value[$_smarty_tpl->tpl_vars['integ']->value->getId()]==''){?>
+                                <TD class=""> - </TD>
+                            <?php }else{ ?>
+                                <TD class=""><?php echo $_smarty_tpl->tpl_vars['voto']->value[$_smarty_tpl->tpl_vars['integ']->value->getId()];?>
  </TD>
-                            <?php } ?>
+                            <?php }?>
+                        <?php } ?>
                     </TR>
                 </TBODY>
             </TABLE>

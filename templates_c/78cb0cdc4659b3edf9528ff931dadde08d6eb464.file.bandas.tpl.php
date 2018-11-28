@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-01-21 09:34:22
+<?php /* Smarty version Smarty-3.1.8, created on 2018-11-27 09:58:23
          compiled from ".\Templates\bandas\bandas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:669356a0c23ea32fe4-07750270%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '78cb0cdc4659b3edf9528ff931dadde08d6eb464' => 
     array (
       0 => '.\\Templates\\bandas\\bandas.tpl',
-      1 => 1453222831,
+      1 => 1524081773,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_56a0c23ebb28b9_36933954',
   'variables' => 
   array (
     'bandas' => 0,
     'banda' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_56a0c23ebb28b9_36933954',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56a0c23ebb28b9_36933954')) {function content_56a0c23ebb28b9_36933954($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("novoCabecalho.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('titulo'=>"Lista de Bandas",'bandasActive'=>"active"), 0);?>
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-02-19 14:13:28
+<?php /* Smarty version Smarty-3.1.8, created on 2018-11-28 14:01:12
          compiled from ".\Templates\shows\showDetalhesImprimir.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1803956c73813096d16-55963944%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b3c793be74e7d6d91ec4138df3d6745bfcfb1eb2' => 
     array (
       0 => '.\\Templates\\shows\\showDetalhesImprimir.tpl',
-      1 => 1455898405,
+      1 => 1543420870,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'show' => 0,
     'bloco1' => 0,
     'bloco' => 0,
+    'inst' => 0,
     'bloco2' => 0,
     'bis' => 0,
   ),
@@ -85,9 +86,21 @@ $_smarty_tpl->tpl_vars['bloco']->_loop = true;
 ?>
                                     <li class="list-group-item" id="<?php echo $_smarty_tpl->tpl_vars['bloco']->value->getId();?>
 "><span class="badge"><?php echo $_smarty_tpl->tpl_vars['bloco']->value->getDuracao();?>
-</span> <?php echo $_smarty_tpl->tpl_vars['bloco']->value->getNome();?>
-</li>
-                                    <?php } ?>                        
+</span> 
+                                        <?php  $_smarty_tpl->tpl_vars['inst'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['inst']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['bloco']->value->getInstrumental()->getInstrumental(); if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['inst']->key => $_smarty_tpl->tpl_vars['inst']->value){
+$_smarty_tpl->tpl_vars['inst']->_loop = true;
+?>
+                                            <img height="42" width="42" src="<?php echo $_SESSION['baseURL'];?>
+/Templates/img/<?php echo $_smarty_tpl->tpl_vars['inst']->value->getInstrumento()->getIcone();?>
+" title="<?php echo $_smarty_tpl->tpl_vars['inst']->value->getIntegrante()->getNome();?>
+">&nbsp;
+                                        <?php } ?>
+                                        <?php echo $_smarty_tpl->tpl_vars['bloco']->value->getNome();?>
+
+                                    </li>
+                                <?php } ?>                        
                             </ul>
                         </div>
 
@@ -101,9 +114,21 @@ $_smarty_tpl->tpl_vars['bloco']->_loop = true;
 ?>
                                     <li class="list-group-item" id="<?php echo $_smarty_tpl->tpl_vars['bloco']->value->getId();?>
 "><span class="badge"><?php echo $_smarty_tpl->tpl_vars['bloco']->value->getDuracao();?>
-</span> <?php echo $_smarty_tpl->tpl_vars['bloco']->value->getNome();?>
-</li>
-                                    <?php } ?>                        
+</span> 
+                                        <?php  $_smarty_tpl->tpl_vars['inst'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['inst']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['bloco']->value->getInstrumental()->getInstrumental(); if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['inst']->key => $_smarty_tpl->tpl_vars['inst']->value){
+$_smarty_tpl->tpl_vars['inst']->_loop = true;
+?>
+                                            <img height="42" width="42" src="<?php echo $_SESSION['baseURL'];?>
+/Templates/img/<?php echo $_smarty_tpl->tpl_vars['inst']->value->getInstrumento()->getIcone();?>
+" title="<?php echo $_smarty_tpl->tpl_vars['inst']->value->getIntegrante()->getNome();?>
+">&nbsp;
+                                        <?php } ?>
+                                        <?php echo $_smarty_tpl->tpl_vars['bloco']->value->getNome();?>
+
+                                    </li>
+                                <?php } ?>                        
                             </ul>
                         </div>
 
@@ -117,9 +142,21 @@ $_smarty_tpl->tpl_vars['bloco']->_loop = true;
 ?>
                                     <li class="list-group-item" id="<?php echo $_smarty_tpl->tpl_vars['bloco']->value->getId();?>
 "><span class="badge"><?php echo $_smarty_tpl->tpl_vars['bloco']->value->getDuracao();?>
-</span> <?php echo $_smarty_tpl->tpl_vars['bloco']->value->getNome();?>
-</li>
-                                    <?php } ?>                        
+</span> 
+                                        <?php  $_smarty_tpl->tpl_vars['inst'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['inst']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['bloco']->value->getInstrumental()->getInstrumental(); if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['inst']->key => $_smarty_tpl->tpl_vars['inst']->value){
+$_smarty_tpl->tpl_vars['inst']->_loop = true;
+?>
+                                            <img height="42" width="42" src="<?php echo $_SESSION['baseURL'];?>
+/Templates/img/<?php echo $_smarty_tpl->tpl_vars['inst']->value->getInstrumento()->getIcone();?>
+" title="<?php echo $_smarty_tpl->tpl_vars['inst']->value->getIntegrante()->getNome();?>
+">&nbsp;
+                                        <?php } ?>
+                                        <?php echo $_smarty_tpl->tpl_vars['bloco']->value->getNome();?>
+
+                                    </li>
+                                <?php } ?>                        
                             </ul>
                         </div>
 

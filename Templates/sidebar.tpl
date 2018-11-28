@@ -43,6 +43,13 @@
                     <li><a href="{$smarty.session.baseURL}/shows/formIncluirShow"><i class="fa fa-plus"></i> Adicionar Show</a></li>
                 </ul>
             </li>
+            <li class="treeview {$integrantesActive}">
+                <a href="#"><i class="fa fa-user"></i> <span>Integrantes</span></a>
+                <ul class="treeview-menu">
+                    <li><a href="{$smarty.session.baseURL}/integrantes/main">Todos</a></li>
+                    <li><a href="{$smarty.session.baseURL}/integrantes/formIncluirintegrante"><i class="fa fa-plus"></i> Adicionar Integrante</a></li>
+                </ul>
+            </li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

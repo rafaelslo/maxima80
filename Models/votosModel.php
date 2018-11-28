@@ -7,17 +7,18 @@ class Votos extends Model {
     private $votos = array();
 
     public function carrega($id,$editavel) {
+
         $this->conectar();
         $query = "SELECT * FROM votos WHERE id_musica=" . $id . ";";
         $resultado = $this->query($query);
         $this->desconectar();
 
-        $this->votos = Array("-", "-", "-", "-", "-");
-        $this->votos[$_SESSION["m80Usuario"] - 1] = selVoto("4", $_SESSION["m80Usuario"],$id,$editavel);
+        //$this->votos = Array("-", "-", "-", "-", "-");
+        $this->votos[$_SESSION["m80Usuario"]] = selVoto("4", $_SESSION["m80Usuario"],$id,$editavel);
 
         if (!is_bool($resultado)) {
             foreach ($resultado as $result) {
-                $this->votos[$result["id_integrante"] - 1] = selVoto($result["voto"], $result["id_integrante"],$id,$editavel);
+                $this->votos[$result["id_integrante"]] = selVoto($result["voto"], $result["id_integrante"],$id,$editavel);
             }
         }
     }

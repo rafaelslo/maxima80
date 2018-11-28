@@ -23,8 +23,13 @@
                     <div class="box-header with-border" id="bloco1">Bloco 1 <span class="badge pull-right bg-light-blue">00:00</span></div>
                     <ul id="sortable1" class="connectedSortable list-group">
                         {foreach $bloco1 as $bloco}
-                            <li class="list-group-item list-group-item-success" id="{$bloco->getId()}"><span class="badge">{$bloco->getDuracao()}</span> {$bloco->getNome()}</li>
-                            {/foreach}                        
+                            <li class="list-group-item list-group-item-success" id="{$bloco->getId()}"><span class="badge">{$bloco->getDuracao()}</span> 
+                                {foreach $bloco->getInstrumental()->getInstrumental() as $inst}
+                                    <img height="42" width="42" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getIntegrante()->getNome()}">&nbsp;
+                                {/foreach}
+                                {$bloco->getNome()}
+                            </li>
+                        {/foreach}                        
                     </ul>
                 </div>
 
@@ -32,8 +37,13 @@
                     <div class="box-header with-border" id="bloco2">Bloco 2 <span class="badge pull-right bg-light-blue">00:00</span></div>
                     <ul id="sortable2" class="connectedSortable list-group">
                         {foreach $bloco2 as $bloco}
-                            <li class="list-group-item list-group-item-success" id="{$bloco->getId()}"><span class="badge">{$bloco->getDuracao()}</span> {$bloco->getNome()}</li>
-                            {/foreach}                        
+                            <li class="list-group-item list-group-item-success" id="{$bloco->getId()}"><span class="badge">{$bloco->getDuracao()}</span> 
+                                {foreach $bloco->getInstrumental()->getInstrumental() as $inst}
+                                    <img height="42" width="42" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getIntegrante()->getNome()}">&nbsp;
+                                {/foreach}
+                                {$bloco->getNome()}
+                            </li>
+                        {/foreach}                        
                     </ul>
                 </div>
 
@@ -41,8 +51,13 @@
                     <div class="box-header with-border" id="bis">Bis <span class="badge pull-right bg-light-blue">00:00</span></div>
                     <ul id="sortable3" class="connectedSortable list-group">
                         {foreach $bis as $bloco}
-                            <li class="list-group-item list-group-item-success" id="{$bloco->getId()}"><span class="badge">{$bloco->getDuracao()}</span> {$bloco->getNome()}</li>
-                            {/foreach}                        
+                            <li class="list-group-item list-group-item-success" id="{$bloco->getId()}"><span class="badge">{$bloco->getDuracao()}</span> 
+                                {foreach $bloco->getInstrumental()->getInstrumental() as $inst}
+                                    <img height="42" width="42" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getInstrumento()->getNome()}">
+                                {/foreach}    
+                                {$bloco->getNome()}
+                            </li>
+                        {/foreach}                        
                     </ul>
                 </div>
 
@@ -53,8 +68,13 @@
                     <div class="box-header with-border">Musicas Prontas </div>
                     <ul id="sortable4" class="connectedSortable list-group">
                         {foreach $prontas as $pronta}
-                            <li class="list-group-item list-group-item-success" id="{$pronta->getId()}"><span class="badge">{$pronta->getDuracao()}</span> {$pronta->getNome()}</li>
-                            {/foreach}                        
+                            <li class="list-group-item list-group-item-success" id="{$pronta->getId()}"><span class="badge">{$pronta->getDuracao()}</span> 
+                                {foreach $pronta->getInstrumental()->getInstrumental() as $inst}
+                                    <img height="42" width="42" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getIntegrante()->getNome()}">&nbsp;
+                                {/foreach}
+                                {$pronta->getNome()}
+                            </li>
+                        {/foreach}                        
                     </ul>
                 </div>
                 <BR>

@@ -34,13 +34,21 @@ class musicasController extends Controller {
         $musica = new Musica();
         $musica->carrega($id);
         $_SESSION["tempMusica"]=$musica->getId();
-        $this->view->exibirDetalhesMusica($musica);
+        
+        $integrantes = new ListaIntegrantes();
+        $integrantes->carrega("Ativo");
+               
+        $this->view->exibirDetalhesMusica($musica,$integrantes->getIntegrantes());
     }
 
     function votar() {
         $musicas = new ListaMusicas();
         $musicas->carrega("Votar");
-        $this->view->exibirListaMusicasVotar($musicas->getMusicas());
+        
+        $integrantes = new ListaIntegrantes();
+        $integrantes->carrega("Ativo");
+        
+        $this->view->exibirListaMusicasVotar($musicas->getMusicas(),$integrantes->getIntegrantes());
     }
 
     function prontas() {
@@ -115,6 +123,38 @@ class musicasController extends Controller {
         $musica = new Musica();
         $musica->carrega($_SESSION["tempMusica"]);
         $this->view->exibirDetalhesMusica($musica);
+    }
+
+    function formIncluirInstrumental($musica) {
+        $integrantes = new ListaIntegrantes();
+        $integrantes->carrega("Ativo");
+        
+        $instrumentos = new Instrumentos();
+        $instrumentos->carrega();
+        
+        $this->view->exibirFormIncluirInstrumental($musica,$integrantes,$instrumentos);
+    }
+
+    function incluirInstrumental() {
+        $instrumental = new ListaInstrumental();
+        $resultado = $instrumental->grava($_REQUEST);
+        $musica = new Musica();
+        $musica->carrega($_REQUEST["inputId"]);
+        $integrantes = new ListaIntegrantes();
+        $integrantes->carrega("Ativo");
+               
+        $this->view->exibirDetalhesMusica($musica,$integrantes->getIntegrantes());
+    }
+
+    function removerInstrumental($id) {
+        $instrumental = new ListaInstrumental();
+        $resultado = $instrumental->remove($id);
+        $musica = new Musica();
+        $musica->carrega($_SESSION["tempMusica"]);
+        $integrantes = new ListaIntegrantes();
+        $integrantes->carrega("Ativo");
+               
+        $this->view->exibirDetalhesMusica($musica,$integrantes->getIntegrantes());
     }
     
 }

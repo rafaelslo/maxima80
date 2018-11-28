@@ -1,11 +1,11 @@
-{include file="novoCabecalho.tpl" titulo="Lista de Músicas" musicasActive="active"}
+{include file="novoCabecalho.tpl" titulo="Lista de Músicas para Votação" musicasActive="active"}
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
             Musicas
-            <small>Lista de Músicas</small>
+            <small>Lista de Músicas para Votação</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-music"></i> Musicas</a></li>
@@ -24,11 +24,9 @@
                         <TH> Nome </TH>
                         <TH> Banda </TH>
                         <TH> Status </TH>
-                        <TH> Rafael </TH>
-                        <TH> Rodrigo </TH>
-                        <TH> Vanio </TH>
-                        <TH> Marcio </TH>
-                        <TH> Emerson </TH>
+                        {foreach $integrantes as $integ}
+                            <TH>{$integ->getNome()}</TH>
+                        {/foreach}
                     </tr>
                 </thead>
                 <tbody>
@@ -37,10 +35,15 @@
                             <TD><a href="{$smarty.session.baseURL}/musicas/detalha/{$musica->getId()}">{$musica->getNome()}</a></TD>
                             <TD>{$musica->getBanda()} </TD>
                             <TD musica="{$musica->getId()}" class="{$musica->getStatus()->getCor()}">{$musica->getStatus()->getNome()}</TD>
+                            {$voto = $musica->getVotos()->getVotos()}
 
-                            {foreach $musica->getVotos()->getVotos() as $voto}
-                                <TD class="">{$voto} </TD>
-                                {/foreach}
+                            {foreach $integrantes as $integ}
+                                {if $voto[$integ->getId()] eq ""}
+                                    <TD class=""> - </TD>
+                                {else}
+                                    <TD class="">{$voto[$integ->getId()]} </TD>
+                                {/if}
+                            {/foreach}
                         </TR>
                     {/foreach}
                 </tbody>
@@ -49,11 +52,9 @@
                         <TH> Nome </TH>
                         <TH> Banda </TH>
                         <TH> Status </TH>
-                        <TH> Rafael </TH>
-                        <TH> Rodrigo </TH>
-                        <TH> Vanio </TH>
-                        <TH> Marcio </TH>
-                        <TH> Emerson </TH>
+                        {foreach $integrantes as $integ}
+                            <TH>{$integ->getNome()}</TH>
+                        {/foreach}
                     </tr>
                 </tfoot>
             </table>

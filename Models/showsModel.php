@@ -9,7 +9,7 @@ class ListaShows extends Model {
 
     public function carrega() {
         $this->conectar();
-        $query = "SELECT * FROM shows;";
+        $query = "SELECT * FROM shows ORDER BY data DESC;";
         $resultado = $this->query($query);
         $this->desconectar();
 

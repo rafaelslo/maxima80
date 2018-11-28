@@ -20,6 +20,8 @@
 <script src="{$smarty.session.baseURL}/Templates/includes/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
 <!-- DatePicker -->
 <script src="{$smarty.session.baseURL}/Templates/includes/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="{$smarty.session.baseURL}/Templates/includes/plugins/moment.js" type="text/javascript"></script>
+<script src="{$smarty.session.baseURL}/Templates/includes/plugins/datetime-moment.js" type="text/javascript"></script>
 <script>
     var $configuraDataTable = {
         "paging": true,

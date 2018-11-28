@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-02-19 14:27:28
+<?php /* Smarty version Smarty-3.1.8, created on 2018-11-28 14:26:33
          compiled from ".\Templates\novoRodape.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4655569fd65d2a5038-76770967%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '26f5ca80f81e290e0b3e7359c30512b92501391c' => 
     array (
       0 => '.\\Templates\\novoRodape.tpl',
-      1 => 1455899245,
+      1 => 1543422388,
       2 => 'file',
     ),
   ),
@@ -50,6 +50,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <!-- DatePicker -->
 <script src="<?php echo $_SESSION['baseURL'];?>
 /Templates/includes/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="<?php echo $_SESSION['baseURL'];?>
+/Templates/includes/plugins/moment.js" type="text/javascript"></script>
+<script src="<?php echo $_SESSION['baseURL'];?>
+/Templates/includes/plugins/datetime-moment.js" type="text/javascript"></script>
 <script>
     var $configuraDataTable = {
         "paging": true,

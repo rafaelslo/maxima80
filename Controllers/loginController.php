@@ -41,13 +41,10 @@ class loginController extends Controller {
 
     public function efetivaLogin() {
 
-        // Caso o usuário exista no sistema (MSG=="") deve buscar os seus dados, preferências e atuações
         $integrante = new Integrante();
         $resp=$integrante->valida($_REQUEST);
         if(!is_bool($resp)) {
-            //$retorno["MSG"] = $resp;
-            //$this->view->mensagemUsuario($retorno);
-            $this->view->exibirTelaLogin("Usuário ou senha inválida");
+            $this->view->exibirTelaLogin($resp);
             return;
         }
 

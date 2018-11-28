@@ -12,13 +12,15 @@ class musicasView extends View {
         $this->mostrarNaTela('musicasImprimir.tpl');
     }
 
-    public function exibirListaMusicasVotar($musicas) {
+    public function exibirListaMusicasVotar($musicas,$integrantes) {
         $this->atribuirValor("musicas", $musicas);
+        $this->atribuirValor("integrantes", $integrantes);
         $this->mostrarNaTela('musicasVotar.tpl');
     }
 
-    public function exibirDetalhesMusica($musica) {
+    public function exibirDetalhesMusica($musica,$integrantes) {
         $this->atribuirValor("musica", $musica);
+        $this->atribuirValor("integrantes", $integrantes);
         $this->mostrarNaTela('musicaDetalhes.tpl');
     }
 
@@ -30,6 +32,13 @@ class musicasView extends View {
     public function exibirFormIncluirRecurso($musica) {
         $this->atribuirValor("musica", $musica);
         $this->mostrarNaTela('formIncluirRecurso.tpl');
+    }
+    
+    public function exibirFormIncluirInstrumental($musica,$integrantes,$instrumentos) {
+        $this->atribuirValor("musica", $musica);
+        $this->atribuirValor("integrantes", $integrantes);
+        $this->atribuirValor("instrumentos", $instrumentos);
+        $this->mostrarNaTela('formIncluirInstrumental.tpl');
     }
 
 }

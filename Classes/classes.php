@@ -12,7 +12,7 @@ class Model {
 
     protected function conectar() {
         //TODO: acertar conexão em produção
-        if ($_SERVER["REMOTE_ADDR"] == "127.0.0.1") {
+        if ($_SERVER["SERVER_NAME"] == "localhost") {
             $this->conn = @mysqli_connect("10.60.145.1", "root", "");
             mysqli_select_db($this->conn, "maxima80");
         } else {

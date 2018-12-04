@@ -85,7 +85,9 @@
                                     <span>
                                     <img src="{$smarty.session.baseURL}/Templates/img/User-blue.png" class="user-image" alt="User Image" />
                                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                    <span class="badge count">{$smarty.session.notificacoes->countNotificacoes()}</span>
+                                    {if $smarty.session.notificacoes->countNotificacoes() gt 0}
+                                        <span class="badge count">{$smarty.session.notificacoes->countNotificacoes()}</span>
+                                    {/if}
                                     </span>
                                     <span class="hidden-xs">{$smarty.session.m80Usuario_nome}</span>
                                 </a>

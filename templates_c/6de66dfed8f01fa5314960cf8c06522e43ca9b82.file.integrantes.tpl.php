@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-11-27 13:41:00
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-04 16:42:30
          compiled from ".\Templates\integrantes\integrantes.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:197485bfd593d47cca8-84758567%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:241695c06ca96d07fe9-47611321%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,20 +11,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '197485bfd593d47cca8-84758567',
+  'nocache_hash' => '241695c06ca96d07fe9-47611321',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_5bfd593d6ed877_96502156',
   'variables' => 
   array (
     'integrantes' => 0,
     'integrante' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_5c06ca97055587_02156690',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5bfd593d6ed877_96502156')) {function content_5bfd593d6ed877_96502156($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("novoCabecalho.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('titulo'=>"Lista de Bandas",'integrantesActive'=>"active"), 0);?>
+<?php if ($_valid && !is_callable('content_5c06ca97055587_02156690')) {function content_5c06ca97055587_02156690($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("novoCabecalho.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('titulo'=>"Lista de Bandas",'integrantesActive'=>"active"), 0);?>
 
 
 <div class="content-wrapper">

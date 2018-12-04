@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-12-04 14:53:07
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-04 16:39:59
          compiled from ".\Templates\novoCabecalho.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24073569fd65cbdaa97-55393489%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '674bdc6a6ac1af430f35673d32f762a7330b89e7' => 
     array (
       0 => '.\\Templates\\novoCabecalho.tpl',
-      1 => 1543942385,
+      1 => 1543948775,
       2 => 'file',
     ),
   ),
@@ -123,8 +123,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                     <img src="<?php echo $_SESSION['baseURL'];?>
 /Templates/img/User-blue.png" class="user-image" alt="User Image" />
                                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                    <span class="badge count"><?php echo $_SESSION['notificacoes']->countNotificacoes();?>
+                                    <?php if ($_SESSION['notificacoes']->countNotificacoes()>0){?>
+                                        <span class="badge count"><?php echo $_SESSION['notificacoes']->countNotificacoes();?>
 </span>
+                                    <?php }?>
                                     </span>
                                     <span class="hidden-xs"><?php echo $_SESSION['m80Usuario_nome'];?>
 </span>

@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-11-27 13:57:18
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-04 16:43:31
          compiled from ".\Templates\integrantes\integranteDetalhes.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:87875bfd5c60576c11-30663041%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:311195c06cad35954d0-12016666%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,19 +11,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '87875bfd5c60576c11-30663041',
+  'nocache_hash' => '311195c06cad35954d0-12016666',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_5bfd5c60745e18_70212533',
   'variables' => 
   array (
     'integrante' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_5c06cad3998c69_42285769',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5bfd5c60745e18_70212533')) {function content_5bfd5c60745e18_70212533($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("novoCabecalho.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('titulo'=>"Detalhes de Integrante",'integrantesActive'=>"active"), 0);?>
+<?php if ($_valid && !is_callable('content_5c06cad3998c69_42285769')) {function content_5c06cad3998c69_42285769($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("novoCabecalho.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('titulo'=>"Detalhes de Integrante",'integrantesActive'=>"active"), 0);?>
 
 
 <!-- Content Wrapper. Contains page content -->

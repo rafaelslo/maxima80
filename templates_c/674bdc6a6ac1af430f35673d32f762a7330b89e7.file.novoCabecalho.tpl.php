@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-01-26 09:46:34
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-04 14:53:07
          compiled from ".\Templates\novoCabecalho.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24073569fd65cbdaa97-55393489%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '674bdc6a6ac1af430f35673d32f762a7330b89e7' => 
     array (
       0 => '.\\Templates\\novoCabecalho.tpl',
-      1 => 1453808737,
+      1 => 1543942385,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'titulo' => 0,
+    'notifica' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -68,7 +69,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <!-- Folha de Estilos para o datepicker -->
         <link rel="stylesheet" href="<?php echo $_SESSION['baseURL'];?>
 /Templates/includes/plugins/datepicker/datepicker3.css">
-
+        <STYLE>
+            .count {
+                z-index: 1;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                background-color: #d9534f;
+              }
+        </style>
     </HEAD>
 
     <body class="skin-blue sidebar-mini">
@@ -110,13 +119,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                 <!-- Menu Toggle Button -->
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <!-- The user image in the navbar-->
+                                    <span>
                                     <img src="<?php echo $_SESSION['baseURL'];?>
 /Templates/img/User-blue.png" class="user-image" alt="User Image" />
                                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                    <span class="badge count"><?php echo $_SESSION['notificacoes']->countNotificacoes();?>
+</span>
+                                    </span>
                                     <span class="hidden-xs"><?php echo $_SESSION['m80Usuario_nome'];?>
 </span>
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" style="border-color: lightgray">
                                     <!-- The user image in the menu -->
                                     <li class="user-header">
                                         <img src="<?php echo $_SESSION['baseURL'];?>
@@ -124,12 +137,31 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                         <p>
                                             <?php echo $_SESSION['m80Usuario_nome'];?>
 
+                                            <small><?php echo $_SESSION['m80Usuario_mail'];?>
+</small>
                                             <small><?php echo $_SESSION['m80Usuario'];?>
 </small>
                                         </p>
                                     </li>
                                     <!-- Menu Body -->
                                     <li class="user-body">
+                                        <?php if ($_SESSION['notificacoes']->countNotificacoes()==0){?>
+                                            Nenhuma Notificação
+                                        <?php }else{ ?>
+                                            <?php  $_smarty_tpl->tpl_vars['notifica'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['notifica']->_loop = false;
+ $_from = $_SESSION['notificacoes']->getNotificacoes(); if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['notifica']->key => $_smarty_tpl->tpl_vars['notifica']->value){
+$_smarty_tpl->tpl_vars['notifica']->_loop = true;
+?>
+                                                <CENTER><img src="<?php echo $_SESSION['baseURL'];?>
+/Templates/img/<?php echo $_smarty_tpl->tpl_vars['notifica']->value->getIcone();?>
+" class="img-circle" alt="User Image" width="35" height="35"/></CENTER>
+                                                <A href="<?php echo $_SESSION['baseURL'];?>
+/<?php echo $_smarty_tpl->tpl_vars['notifica']->value->getAtalho();?>
+"><?php echo $_smarty_tpl->tpl_vars['notifica']->value->getTexto();?>
+</A>
+                                            <?php } ?>
+                                        <?php }?>
                                     </li>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">

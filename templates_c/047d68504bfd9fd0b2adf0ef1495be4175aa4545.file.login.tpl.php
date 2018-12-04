@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-11-27 09:53:25
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-04 09:19:37
          compiled from ".\Templates\login\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:346569faaf3549f37-37335008%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '047d68504bfd9fd0b2adf0ef1495be4175aa4545' => 
     array (
       0 => '.\\Templates\\login\\login.tpl',
-      1 => 1524227400,
+      1 => 1543922375,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'titulo' => 0,
+    'email' => 0,
     'mensagem' => 0,
   ),
   'has_nocache_code' => false,
@@ -69,7 +70,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <form action="<?php echo $_SESSION['baseURL'];?>
 /login/efetivalogin" method="post">
                     <div class="form-group has-feedback">
-                        <input type="email" class="form-control" placeholder="Email" id="Email" name="Email">
+                        <input type="email" class="form-control" placeholder="Email" id="Email" name="Email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
+">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">

@@ -8,7 +8,12 @@ class ListaBandas extends Model {
 
     public function carrega() {
         $this->conectar();
-        $query = "SELECT * FROM bandas ORDER BY nome ASC;";
+        $query = "SELECT A.* , 
+            (SELECT COUNT( id ) FROM musicas WHERE id_banda = A.id) total, 
+            (SELECT COUNT( id ) FROM musicas WHERE id_banda = A.id AND id_status >1) aprovadas
+        FROM bandas A
+        ORDER BY A.nome ASC;";
+        
         $resultado = $this->query($query);
         $this->desconectar();
 
@@ -16,13 +21,8 @@ class ListaBandas extends Model {
             $banda = new Banda();
             $banda->setId($result["id"]);
             $banda->setNome($result["nome"]);
-
-            $this->conectar();
-            $query = "SELECT count(*) as total FROM musicas WHERE id_banda=" . $result["id"] . ";";
-            $total = $this->query($query);
-            $this->desconectar();
-
-            $banda->setNumMusicas($total[0]["total"]);
+            $banda->setNumMusicas($result["total"]);
+            $banda->setNumAprovadas($result["aprovadas"]);
             $this->addBanda($banda);
         }
     }
@@ -55,25 +55,30 @@ class Banda extends Model {
     private $id;
     private $nome;
     private $numMusicas;
+    private $numAprovadas;
 
     /**
      * 
      * @param String $cpf CPF do usuario a ser carregado
      */
-    public function carrega($id) {
+    public function carrega($id,$totais = false) {
         $this->conectar();
-        $query = "SELECT * FROM bandas WHERE id=" . $id . ";";
+        if($totais) {
+            $query = "SELECT *, 
+                (SELECT COUNT( id ) FROM musicas WHERE id_banda = A.id) total, 
+                (SELECT COUNT( id ) FROM musicas WHERE id_banda = A.id AND id_status >1) aprovadas
+                FROM bandas 
+                WHERE id=" . $id . ";";
+        } else {
+            $query = "SELECT * FROM bandas WHERE id=" . $id . ";";
+            
+        }
         $result = $this->query($query);
         $this->desconectar();
-
         $this->setId($result[0]["id"]);
         $this->setNome($result[0]["nome"]);
-
-        $this->conectar();
-        $query = "SELECT count(*) as total FROM musicas WHERE id_banda=" . $id . ";";
-        $total = $this->query($query);
-        $this->desconectar();
-        $this->setNumMusicas($total[0]["total"]);
+        $this->setNumMusicas($result[0]["total"]);
+        $this->setNumAprovadas($result[0]["aprovadas"]);
     }
     
     public function grava($request) {
@@ -107,7 +112,14 @@ class Banda extends Model {
     public function setNumMusicas($numMusicas) {
         $this->numMusicas = $numMusicas;
     }
+    
+    public function getNumAprovadas() {
+        return $this->numAprovadas;
+    }
 
+    public function setNumAprovadas($numAprovadas) {
+        $this->numAprovadas = $numAprovadas;
+    }
 }
 ?>
 

@@ -25,7 +25,7 @@ class showsView extends View {
         $this->atribuirValor("bloco1", $bloco1);
         $this->atribuirValor("bloco2", $bloco2);
         $this->atribuirValor("bis", $bis);
-        $this->mostrarNaTela('showDetalhesImprimir.tpl');
+        $this->mostrarNaTela('showDetalhesImprimirHorizontal.tpl');
     }
 }
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-11-27 09:58:23
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-04 15:27:08
          compiled from ".\Templates\bandas\bandas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:669356a0c23ea32fe4-07750270%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '78cb0cdc4659b3edf9528ff931dadde08d6eb464' => 
     array (
       0 => '.\\Templates\\bandas\\bandas.tpl',
-      1 => 1524081773,
+      1 => 1543944425,
       2 => 'file',
     ),
   ),
@@ -51,6 +51,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <TH> Código </TH>
                         <TH> Nome </TH>
                         <TH> Músicas </TH>
+                        <TH> Músicas Aprovadas</TH>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,6 +67,8 @@ $_smarty_tpl->tpl_vars['banda']->_loop = true;
  </TD>
                             <TD><?php echo $_smarty_tpl->tpl_vars['banda']->value->getNumMusicas();?>
  </TD>
+                            <TD><?php echo $_smarty_tpl->tpl_vars['banda']->value->getNumAprovadas();?>
+ </TD>
                         </TR>
                     <?php } ?>
                 </tbody>
@@ -74,6 +77,7 @@ $_smarty_tpl->tpl_vars['banda']->_loop = true;
                         <TH> Código </TH>
                         <TH> Nome </TH>
                         <TH> Músicas </TH>
+                        <TH> Músicas Aprovadas</TH>
                     </tr>
                 </tfoot>
             </table>

@@ -4,8 +4,9 @@ class loginView extends View {
      * Exibe a tela inicial de login
      *
      */
-    public function exibirTelaLogin($mensagem = "") {
+    public function exibirTelaLogin($mensagem = "",$email = "") {
         $this->atribuirValor("mensagem", $mensagem);
+        $this->atribuirValor("email", $email);
         $this->mostrarNaTela('login.tpl');
     }
 

@@ -69,8 +69,10 @@ class musicasController extends Controller {
         $musica = new Musica();
         $musica->gravaStatus($idMusica, $status);
         $musica->carrega($idMusica);
-
-        $this->view->exibirDetalhesMusica($musica);
+        $integrantes = new ListaIntegrantes();
+        $integrantes->carrega("Ativo");
+               
+        $this->view->exibirDetalhesMusica($musica,$integrantes->getIntegrantes());
     }
 
     function procVoto($parametros) {
@@ -114,7 +116,10 @@ class musicasController extends Controller {
         $resultado = $recurso->grava($_REQUEST);
         $musica = new Musica();
         $musica->carrega($_REQUEST["inputId"]);
-        $this->view->exibirDetalhesMusica($musica);
+        $integrantes = new ListaIntegrantes();
+        $integrantes->carrega("Ativo");
+               
+        $this->view->exibirDetalhesMusica($musica,$integrantes->getIntegrantes());
     }
 
     function removerRecurso($id) {
@@ -122,7 +127,10 @@ class musicasController extends Controller {
         $resultado = $recurso->remove($id);
         $musica = new Musica();
         $musica->carrega($_SESSION["tempMusica"]);
-        $this->view->exibirDetalhesMusica($musica);
+        $integrantes = new ListaIntegrantes();
+        $integrantes->carrega("Ativo");
+               
+        $this->view->exibirDetalhesMusica($musica,$integrantes->getIntegrantes());
     }
 
     function formIncluirInstrumental($musica) {

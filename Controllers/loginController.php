@@ -42,14 +42,15 @@ class loginController extends Controller {
     public function efetivaLogin() {
 
         $integrante = new Integrante();
-        $resp=$integrante->valida($_REQUEST);
+        $resp = $integrante->valida($_REQUEST);
         if(!is_bool($resp)) {
-            $this->view->exibirTelaLogin($resp);
+            $this->view->exibirTelaLogin($resp,$_REQUEST["Email"]);
             return;
         }
 
         $_SESSION["m80Usuario"] = $integrante->getId();
         $_SESSION["m80Usuario_nome"] = $integrante->getNome();
+        $_SESSION["m80Usuario_mail"] = $integrante->getMail();
 
         $this->boasvindas();
         return;

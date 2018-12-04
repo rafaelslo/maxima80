@@ -33,7 +33,15 @@
         <link rel="stylesheet" href="{$smarty.session.baseURL}/Templates/includes/plugins/datatables/dataTables.bootstrap.css">
         <!-- Folha de Estilos para o datepicker -->
         <link rel="stylesheet" href="{$smarty.session.baseURL}/Templates/includes/plugins/datepicker/datepicker3.css">
-
+        <STYLE>
+            .count {
+                z-index: 1;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                background-color: #d9534f;
+              }
+        </style>
     </HEAD>
 
     <body class="skin-blue sidebar-mini">
@@ -74,21 +82,33 @@
                                 <!-- Menu Toggle Button -->
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <!-- The user image in the navbar-->
+                                    <span>
                                     <img src="{$smarty.session.baseURL}/Templates/img/User-blue.png" class="user-image" alt="User Image" />
                                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                    <span class="badge count">{$smarty.session.notificacoes->countNotificacoes()}</span>
+                                    </span>
                                     <span class="hidden-xs">{$smarty.session.m80Usuario_nome}</span>
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" style="border-color: lightgray">
                                     <!-- The user image in the menu -->
                                     <li class="user-header">
                                         <img src="{$smarty.session.baseURL}/Templates/img/User-blue.png" class="img-circle" alt="User Image" />
                                         <p>
                                             {$smarty.session.m80Usuario_nome}
+                                            <small>{$smarty.session.m80Usuario_mail}</small>
                                             <small>{$smarty.session.m80Usuario}</small>
                                         </p>
                                     </li>
                                     <!-- Menu Body -->
                                     <li class="user-body">
+                                        {if $smarty.session.notificacoes->countNotificacoes() eq 0}
+                                            Nenhuma Notificação
+                                        {else}
+                                            {foreach $smarty.session.notificacoes->getNotificacoes() as $notifica}
+                                                <CENTER><img src="{$smarty.session.baseURL}/Templates/img/{$notifica->getIcone()}" class="img-circle" alt="User Image" width="35" height="35"/></CENTER>
+                                                <A href="{$smarty.session.baseURL}/{$notifica->getAtalho()}">{$notifica->getTexto()}</A>
+                                            {/foreach}
+                                        {/if}
                                     </li>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">

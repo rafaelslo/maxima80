@@ -35,7 +35,7 @@
                 <p class="login-box-msg">Inicie sua sessão</p>
                 <form action="{$smarty.session.baseURL}/login/efetivalogin" method="post">
                     <div class="form-group has-feedback">
-                        <input type="email" class="form-control" placeholder="Email" id="Email" name="Email">
+                        <input type="email" class="form-control" placeholder="Email" id="Email" name="Email" value="{$email}">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">

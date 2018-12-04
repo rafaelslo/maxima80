@@ -24,6 +24,7 @@
                         <TH> Código </TH>
                         <TH> Nome </TH>
                         <TH> Músicas </TH>
+                        <TH> Músicas Aprovadas</TH>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,7 @@
                             <TD>{$banda->getId()} </TD>
                             <TD>{$banda->getNome()} </TD>
                             <TD>{$banda->getNumMusicas()} </TD>
+                            <TD>{$banda->getNumAprovadas()} </TD>
                         </TR>
                     {/foreach}
                 </tbody>
@@ -40,6 +42,7 @@
                         <TH> Código </TH>
                         <TH> Nome </TH>
                         <TH> Músicas </TH>
+                        <TH> Músicas Aprovadas</TH>
                     </tr>
                 </tfoot>
             </table>

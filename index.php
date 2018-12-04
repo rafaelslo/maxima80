@@ -36,6 +36,12 @@ if(($_SESSION["m80Usuario_nome"]=="") AND ($controlador!="login" AND $acao!="tel
     $instancia->exibirTelaFalhaAutenticao();
 }
 
+require_once("./Models/notificacoesModel.php");
+$listaNot = new ListaNotificacoes();
+$listaNot->carrega();
+
+$_SESSION["notificacoes"]=$listaNot;
+
 $_SESSION["queries"]="";
 require_once("Controllers/".$controlador."Controller.php");
 eval('$instancia = new ' . $controlador . 'Controller();');

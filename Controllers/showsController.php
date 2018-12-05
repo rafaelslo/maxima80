@@ -74,6 +74,18 @@ class showsController extends Controller {
         $this->view->imprimirDetalhesShow($show, $bloco1->getMusicas(), $bloco2->getMusicas(), $bis->getMusicas());
     }
     
+    function imprimirHorizontal($id) {
+        $bloco1 = new ListaMusicas();
+        $bloco1->carrega("1#" . $id);
+        $bloco2 = new ListaMusicas();
+        $bloco2->carrega("2#" . $id);
+        $bis = new ListaMusicas();
+        $bis->carrega("3#" . $id);
+        $show = new show();
+        $show->carrega($id);
+        $this->view->imprimirDetalhesShowHorizontal($show, array_merge($bloco1->getMusicas(),$bloco2->getMusicas(),$bis->getMusicas()));
+    }
+    
     function gravaSetlist() {
         if($_REQUEST["id_show"]!="") {
         $nshow = new show();

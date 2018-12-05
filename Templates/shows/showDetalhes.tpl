@@ -87,7 +87,8 @@
                     <button class="btn btn-default btn-block hidden" type="submit" id="grava">Gravar Alterações</button>
                 </form>
                 <BR>
-                <a class="btn btn-default btn-block" href= "{$smarty.session.baseURL}/shows/imprimir/{$show->getId()}" role="button" target="_blank">Imprimir</a>
+                <a class="btn btn-default btn-block" href= "{$smarty.session.baseURL}/shows/imprimir/{$show->getId()}" role="button" target="_blank">Imprimir Padrão 1</a>
+                <a class="btn btn-default btn-block" href= "{$smarty.session.baseURL}/shows/imprimirHorizontal/{$show->getId()}" role="button" target="_blank">Imprimir Padrão 2</a>
             </div>  
         </div>
 

@@ -40,8 +40,6 @@ require_once("./Models/notificacoesModel.php");
 $listaNot = new ListaNotificacoes();
 $listaNot->carrega();
 
-$_SESSION["notificacoes"]=$listaNot;
-
 $_SESSION["queries"]="";
 require_once("Controllers/".$controlador."Controller.php");
 eval('$instancia = new ' . $controlador . 'Controller();');

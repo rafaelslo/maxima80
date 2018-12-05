@@ -2,6 +2,7 @@
 session_start();
 require_once("./Views/loginView.php");
 require_once("./Models/integrantesModel.php");
+require_once("./Models/notificacoesModel.php");
 
 /*
  * Controller que administra as telas de entrada e alteração de dados de sessão do usuário
@@ -52,6 +53,10 @@ class loginController extends Controller {
         $_SESSION["m80Usuario_nome"] = $integrante->getNome();
         $_SESSION["m80Usuario_mail"] = $integrante->getMail();
 
+        $listaNot = new ListaNotificacoes();
+        $listaNot->carrega();
+
+        
         $this->boasvindas();
         return;
     }

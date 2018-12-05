@@ -21,102 +21,67 @@
             <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <style type="text/css" media="print">
-            .page {
-	size: A4 landscape;
-	max-height:100%;
-	max-width:100%
+        <style type="text/css">
+            @page { 
+                size: A4 landscape;
+            }
+            .coluna {    
+                column-count: 2;
+                -webkit-column-count: 2;
+                -webkit-column-gap: 0.25in;
+                -webkit-column-rule-width : 1px;
+                -webkit-column-rule-style : solid;
+                -webkit-column-rule-color : #eee;
+            }
+            h2 {
+                column-span: all;
+                text-align: center;
+            }
+            .padrao2 {
+                border: none;
+                font-family: "Arial Black";
+                font-style: bold;
+                font-size: 25;
+                
+                padding-top: 5px;
+                padding-botton: 5px;
+            }
+            .direita {
+                text-align: right;
             }
         </style>
     </head>
     <body>
 
         <!-- Content Wrapper. Contains page content -->
-        <div>
-            <!-- Main content -->
-            <section class="content page">
-                <!-- Your Page Content Here -->
-                <div class="row">
-                    <div class="col-md-6">
-
-                        <h1>
-                            {$show->getLocal()}
-                            <small>{$show->getData()}</small>
-                        </h1>
-
-                        <div class="box box-solid box-primary">
-                            <div class="box-header with-border" id="bloco1">Bloco 1 <span class="badge pull-right bg-light-blue">00:00</span></div>
-                            <ul id="sortable1">
-                                {foreach $bloco1 as $bloco}
-                                    <li class="list-group-item" id="{$bloco->getId()}"><span class="badge">{$bloco->getDuracao()}</span> 
-                                        {foreach $bloco->getInstrumental()->getInstrumental() as $inst}
-                                            <img height="42" width="42" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getIntegrante()->getNome()}">&nbsp;
-                                        {/foreach}
-                                        {$bloco->getNome()}
-                                    </li>
-                                {/foreach}                        
-                            </ul>
-                        </div>
-
-                        <div class="box box-solid box-primary">
-                            <div class="box-header with-border" id="bloco2">Bloco 2 <span class="badge pull-right bg-light-blue">00:00</span></div>
-                            <ul id="sortable2">
-                                {foreach $bloco2 as $bloco}
-                                    <li class="list-group-item" id="{$bloco->getId()}"><span class="badge">{$bloco->getDuracao()}</span> 
-                                        {foreach $bloco->getInstrumental()->getInstrumental() as $inst}
-                                            <img height="42" width="42" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getIntegrante()->getNome()}">&nbsp;
-                                        {/foreach}
-                                        {$bloco->getNome()}
-                                    </li>
-                                {/foreach}                        
-                            </ul>
-                        </div>
-
-                        <div class="box box-solid box-primary">
-                            <div class="box-header with-border" id="bis">Bis <span class="badge pull-right bg-light-blue">00:00</span></div>
-                            <ul id="sortable3">
-                                {foreach $bis as $bloco}
-                                    <li class="list-group-item" id="{$bloco->getId()}"><span class="badge">{$bloco->getDuracao()}</span> 
-                                        {foreach $bloco->getInstrumental()->getInstrumental() as $inst}
-                                            <img height="42" width="42" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getIntegrante()->getNome()}">&nbsp;
-                                        {/foreach}
-                                        {$bloco->getNome()}
-                                    </li>
-                                {/foreach}                        
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </section><!-- /.content -->
+        <div class="coluna page" id="coluna">
+            <h2>
+                {$show->getLocal()}<BR>
+                <small>{$show->getData()}</small>
+            </h2>
+                <ul id="sortable1">
+                    {foreach $musicas as $musica}
+                        <li class="list-group-item padrao2" id="{$musica->getId()}">
+                            <!-- <span class="badge">{$musica->getDuracao()}</span> -->
+                            {foreach $musica->getInstrumental()->getInstrumental() as $inst}
+                                <img height="42" width="42" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getIntegrante()->getNome()}">&nbsp;
+                            {/foreach}
+                            {$musica->getNome()}
+                        </li>
+                    {/foreach}                        
+                </ul>
         </div><!-- /.content-wrapper -->                       
 
     {include file="novoRodape.tpl"}
     
     <script type="text/javascript">
-        $("#bloco1 span").text(calculaTempos("#sortable1"));
-        $("#bloco2 span").text(calculaTempos("#sortable2"));
-        $("#bis span").text(calculaTempos("#sortable3"));
-
-        window.print();
-        function calculaTempos(elemento) {
-            var total = "00:00";
-            $(elemento + " li span").each(function(index) {
-                horaIni = total.split(':');
-                horaSom = $(this).text().split(':');
-
-                horasTotal = parseInt(horaIni[0], 10) + parseInt(horaSom[0], 10);
-                minutosTotal = parseInt(horaIni[1], 10) + parseInt(horaSom[1], 10);
-
-                if (minutosTotal >= 60) {
-                    minutosTotal -= 60;
-                    horasTotal += 1;
+        $(document).ready(function() {        
+            $(".padrao2").each(function(index) {
+                if($(this).prop("offsetLeft")>100) {
+                    $(this).addClass("direita");
                 }
-                total = horasTotal + ":" + minutosTotal;
-
             });
-            return total;
-        }
+        });
     </script>
 
 

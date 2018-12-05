@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-11-28 13:59:28
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-05 11:37:08
          compiled from ".\Templates\shows\showDetalhes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:285156a0ce5c6c0065-55550148%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '589af1ff552e22a141c7e6c63afd5f77359e5a83' => 
     array (
       0 => '.\\Templates\\shows\\showDetalhes.tpl',
-      1 => 1543420761,
+      1 => 1544016939,
       2 => 'file',
     ),
   ),
@@ -183,7 +183,10 @@ $_smarty_tpl->tpl_vars['inst']->_loop = true;
                 <BR>
                 <a class="btn btn-default btn-block" href= "<?php echo $_SESSION['baseURL'];?>
 /shows/imprimir/<?php echo $_smarty_tpl->tpl_vars['show']->value->getId();?>
-" role="button" target="_blank">Imprimir</a>
+" role="button" target="_blank">Imprimir Padrão 1</a>
+                <a class="btn btn-default btn-block" href= "<?php echo $_SESSION['baseURL'];?>
+/shows/imprimirHorizontal/<?php echo $_smarty_tpl->tpl_vars['show']->value->getId();?>
+" role="button" target="_blank">Imprimir Padrão 2</a>
             </div>  
         </div>
 

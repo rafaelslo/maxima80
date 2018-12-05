@@ -24,6 +24,8 @@ class ListaNotificacoes extends Model {
             $this->notificacoes[] = $notificacao;
         }
 
+        
+        $_SESSION["notificacoes"]=$this;
     }
 
     public function getNotificacoes() {

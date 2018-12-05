@@ -81,6 +81,7 @@
                     $(this).addClass("direita");
                 }
             });
+        window.print();            
         });
     </script>
 

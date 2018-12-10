@@ -29,8 +29,6 @@ if($modulo=="") {
 }
 
 if(($_SESSION["m80Usuario_nome"]=="") AND ($controlador!="login" AND $acao!="telaLogin")) {
-    echo "<BR>Entrou";
-    echo "<BR>".$_SESSION["usuario_nome"]."<BR>".$controlador."<BR>".$acao;
     require_once("Controllers/loginController.php");
     $instancia = new loginController();
     $instancia->exibirTelaFalhaAutenticao();

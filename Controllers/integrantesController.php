@@ -17,6 +17,7 @@ class integrantesController extends Controller {
     }
 
     function main() {
+        echo "chegou controller";
         $integrantes = new Listaintegrantes();
         $integrantes->carrega();
         $this->view->exibirListaIntegrantes($integrantes->getIntegrantes());

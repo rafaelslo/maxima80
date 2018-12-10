@@ -96,7 +96,7 @@ class musicasController extends Controller {
         $resultado = $musica->grava($_REQUEST);
         $musicas = new ListaMusicas();
         $musicas->carrega("Todas");
-        $this->view->exibirListaMusicas($musicas->getMusicas());
+        $this->view->exibirListaMusicas($musicas->getMusicas(),$resultado);
     }
 
     function apagarMusica($id) {

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-01-21 09:34:42
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-06 16:05:25
          compiled from ".\Templates\musicas\formIncluirMusica.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:452356a0c2527c57a3-44803785%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7d2fb951f43c03b4c8b7eee6e48e3881a45a2891' => 
     array (
       0 => '.\\Templates\\musicas\\formIncluirMusica.tpl',
-      1 => 1453222808,
+      1 => 1544119521,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_56a0c2528bfbb2_79076794',
   'variables' => 
   array (
     'selBandas' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_56a0c2528bfbb2_79076794',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56a0c2528bfbb2_79076794')) {function content_56a0c2528bfbb2_79076794($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("novoCabecalho.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('titulo'=>"Incluir Musica",'musicasActive'=>"active"), 0);?>
 
@@ -62,7 +62,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div class="form-group">
                     <label for="inputDuracao" class="col-sm-2 control-label">Duração</label>
                     <div class="col-sm-10">
-                        <input type="text" required class="form-control" id="inputDuracao" name="inputDuracao"  placeholder="00:00">
+                        <input type="time" required class="form-control" id="inputDuracao" name="inputDuracao"  placeholder="00:00">
                     </div>
                 </div>
             </div><!-- /.box-body -->

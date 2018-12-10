@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-12-04 15:27:08
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-07 17:20:56
          compiled from ".\Templates\bandas\bandas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:669356a0c23ea32fe4-07750270%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '78cb0cdc4659b3edf9528ff931dadde08d6eb464' => 
     array (
       0 => '.\\Templates\\bandas\\bandas.tpl',
-      1 => 1543944425,
+      1 => 1544210454,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_56a0c23ebb28b9_36933954',
   'variables' => 
   array (
+    'mensagem' => 0,
     'bandas' => 0,
     'banda' => 0,
   ),
@@ -42,7 +43,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     <!-- Main content -->
     <section class="content">
-
+        <?php if ($_smarty_tpl->tpl_vars['mensagem']->value!=''){?>
+            <BR><p class="login-box-msg label-danger"><?php echo $_smarty_tpl->tpl_vars['mensagem']->value;?>
+</p>
+        <?php }?>
         <!-- Your Page Content Here -->
         <div class="box">
             <table id="tabela1" class="table table-bordered table-striped">

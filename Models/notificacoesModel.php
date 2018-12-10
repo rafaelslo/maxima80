@@ -11,7 +11,7 @@ class ListaNotificacoes extends Model {
         $this->conectar();
         
         //Notificações de votação pendente
-        $query = "Select count(*) from musicas where id not in (select id_musica from votos where id_integrante=".$_SESSION["m80Usuario"].") AND id_status=1;";
+        $query = "Select count(*) from musicas where id not in (select id_musica from votos where id_integrante=".$_SESSION["m80Usuario"]." and voto<>4) AND id_status=1;";
         $resultado = $this->query($query);
         $this->desconectar();
         

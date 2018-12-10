@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-11-27 13:01:49
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-06 16:35:26
          compiled from ".\Templates\sidebar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:30734569fd65d069fc2-53531310%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6e1af8173814b0b2f769a9b7cc20c97bbe48d9b8' => 
     array (
       0 => '.\\Templates\\sidebar.tpl',
-      1 => 1543330902,
+      1 => 1544120500,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bandasActive' => 0,
     'showsActive' => 0,
     'integrantesActive' => 0,
+    'logActive' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -93,6 +94,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <li><a href="<?php echo $_SESSION['baseURL'];?>
 /integrantes/formIncluirintegrante"><i class="fa fa-plus"></i> Adicionar Integrante</a></li>
                 </ul>
+            </li>
+            <li class="treeview <?php echo $_smarty_tpl->tpl_vars['logActive']->value;?>
+">
+                <a href="<?php echo $_SESSION['baseURL'];?>
+/log/main"><i class="fa fa-search"></i> <span>Log</span></a>
             </li>
         </ul><!-- /.sidebar-menu -->
     </section>

@@ -50,6 +50,9 @@
                     <li><a href="{$smarty.session.baseURL}/integrantes/formIncluirintegrante"><i class="fa fa-plus"></i> Adicionar Integrante</a></li>
                 </ul>
             </li>
+            <li class="treeview {$logActive}">
+                <a href="{$smarty.session.baseURL}/log/main"><i class="fa fa-search"></i> <span>Log</span></a>
+            </li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

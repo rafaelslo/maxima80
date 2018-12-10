@@ -10,7 +10,7 @@ class ListaBandas extends Model {
         $this->conectar();
         $query = "SELECT A.* , 
             (SELECT COUNT( id ) FROM musicas WHERE id_banda = A.id) total, 
-            (SELECT COUNT( id ) FROM musicas WHERE id_banda = A.id AND id_status >1) aprovadas
+            (SELECT COUNT( id ) FROM musicas WHERE id_banda = A.id AND id_status >1 AND id_status <>3) aprovadas
         FROM bandas A
         ORDER BY A.nome ASC;";
         
@@ -66,7 +66,7 @@ class Banda extends Model {
         if($totais) {
             $query = "SELECT *, 
                 (SELECT COUNT( id ) FROM musicas WHERE id_banda = A.id) total, 
-                (SELECT COUNT( id ) FROM musicas WHERE id_banda = A.id AND id_status >1) aprovadas
+                (SELECT COUNT( id ) FROM musicas WHERE id_banda = A.id AND id_status >1 AND id_status <>3) aprovadas
                 FROM bandas 
                 WHERE id=" . $id . ";";
         } else {
@@ -83,9 +83,15 @@ class Banda extends Model {
     
     public function grava($request) {
         $this->conectar();
-        $query = "INSERT INTO bandas (`id` ,`nome`)
-                VALUES (NULL ,  '" . $request["inputDescricao"] . "');";
+        $query = "select * from bandas where nome='".$request["inputDescricao"]."'";
         $result = $this->query($query);
+        if (is_array($result)) {
+            return "Já existe banda '".$request["inputDescricao"]."'";
+        } else {
+            $query = "INSERT INTO bandas (`id` ,`nome`)
+                    VALUES (NULL ,  '" . $request["inputDescricao"] . "');";
+            $result = $this->query($query);
+        }
         $this->desconectar();
     }
     

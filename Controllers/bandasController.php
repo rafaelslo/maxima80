@@ -31,7 +31,7 @@ class bandasController extends Controller {
         $resultado = $banda->grava($_REQUEST);
         $bandas = new Listabandas();
         $bandas->carrega();
-        $this->view->exibirListaBandas($bandas->getBandas());
+        $this->view->exibirListaBandas($resultado,$bandas->getBandas());
     }
 
 }

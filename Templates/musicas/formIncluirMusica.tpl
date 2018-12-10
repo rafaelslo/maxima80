@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label for="inputDuracao" class="col-sm-2 control-label">Duração</label>
                     <div class="col-sm-10">
-                        <input type="text" required class="form-control" id="inputDuracao" name="inputDuracao"  placeholder="00:00">
+                        <input type="time" required class="form-control" id="inputDuracao" name="inputDuracao"  placeholder="00:00">
                     </div>
                 </div>
             </div><!-- /.box-body -->

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-11-28 13:24:01
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-10 09:44:48
          compiled from ".\Templates\musicas\musicaDetalhes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2048856a0c267193370-21721737%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3a0be6eadc62bd9687d50b88fdf07f4d564e24ff' => 
     array (
       0 => '.\\Templates\\musicas\\musicaDetalhes.tpl',
-      1 => 1543418639,
+      1 => 1544442284,
       2 => 'file',
     ),
   ),
@@ -157,9 +157,7 @@ $_smarty_tpl->tpl_vars['recurso']->_loop = true;
 ?>
                 <div class="box box-default">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Adicionado em <?php echo $_smarty_tpl->tpl_vars['recurso']->value->getData();?>
- por <?php echo $_smarty_tpl->tpl_vars['recurso']->value->getIntegrante();?>
-</h3>
+                        <h3 class="box-title"> </h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                             <a class="btn btn-danger btn-sm" href= "<?php echo $_SESSION['baseURL'];?>

@@ -25,6 +25,20 @@ class ListaIntegrantes extends Model {
             $this->addIntegrante($integrante);
         }
     }
+    
+    public function getSel($id='') {
+        $retorna = "<select class='form-control' id='inputIntegrante' name='inputIntegrante'>";
+        $retorna.="<option value='0'>Todos</option>";
+        foreach ($this->integrantes as $integrante) {
+            if($id==$integrante->getId()) {
+                $retorna.="<option selected value='" . $integrante->getId() . "'>" . $integrante->getNome() . "</option>";                
+            } else {
+                $retorna.="<option value='" . $integrante->getId() . "'>" . $integrante->getNome() . "</option>";
+            }
+        }
+        $retorna.="</select>";
+        return $retorna;
+    }    
 
     public function getIntegrantes() {
         return $this->integrantes;

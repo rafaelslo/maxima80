@@ -90,7 +90,7 @@
             {foreach $musica->getRecursos() as $recurso}
                 <div class="box box-default">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Adicionado em {$recurso->getData()} por {$recurso->getIntegrante()}</h3>
+                        <h3 class="box-title"> </h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                             <a class="btn btn-danger btn-sm" href= "{$smarty.session.baseURL}/musicas/removerRecurso/{$recurso->getId()}" role="button">Remover Recurso</a>

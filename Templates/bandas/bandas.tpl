@@ -15,7 +15,9 @@
 
     <!-- Main content -->
     <section class="content">
-
+        {if $mensagem != ''}
+            <BR><p class="login-box-msg label-danger">{$mensagem}</p>
+        {/if}
         <!-- Your Page Content Here -->
         <div class="box">
             <table id="tabela1" class="table table-bordered table-striped">

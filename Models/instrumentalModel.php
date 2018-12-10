@@ -32,14 +32,18 @@ class ListaInstrumental extends Model {
 
     public function grava($request) {
         $this->conectar();
-        $query = "INSERT INTO instrumental (`id` ,`idMusica` ,`idIntegrante` ,`idInstrumento`)
-                VALUES (NULL ,  '" . $request["inputId"] . "',  '" . $request["inputIntegrante"] . "',  '" . $request["inputInstrumento"] . "');";
+        $query = "INSERT INTO instrumental (`id` ,`idMusica` ,`idIntegrante` ,`idInstrumento` ,`operador`)
+                VALUES (NULL ,  '" . $request["inputId"] . "',  '" . $request["inputIntegrante"] . "',  '" . $request["inputInstrumento"] . "',  '" . $_SESSION["m80Usuario"] . "');";
         $result = $this->query($query);
         $this->desconectar();
     }    
     
     public function remove($id) {
         $this->conectar();
+
+        $query = "UPDATE `instrumental` SET `operador` = ".$_SESSION["m80Usuario"]." WHERE `id`=".$id." LIMIT 1;";
+        $result = $this->query($query);
+        
         $query = "DELETE FROM instrumental WHERE id='" . $id . "';";
         $result = $this->query($query);
         $this->desconectar();

@@ -58,14 +58,18 @@ class Recurso extends Model {
 
     public function grava($request) {
         $this->conectar();
-        $query = "INSERT INTO recursos (`id` ,`id_musica` ,`tipo` ,`recurso` ,`data` ,`id_Integrante`)
-                VALUES (NULL ,  '" . $request["inputId"] . "',  '" . $request["inputTipo"] . "',  '" . $request["inputRecurso"] . "',  '" . date("Y-m-d") . "',  '" . $_SESSION["m80Usuario"] . "');";
+        $query = "INSERT INTO recursos (`id` ,`id_musica` ,`tipo` ,`recurso` ,`operador`)
+                VALUES (NULL ,  '" . $request["inputId"] . "',  '" . $request["inputTipo"] . "',  '" . $request["inputRecurso"] . "',  '" . $_SESSION["m80Usuario"] . "');";
         $result = $this->query($query);
         $this->desconectar();
     }
 
     public function remove($id) {
         $this->conectar();
+
+        $query = "UPDATE `recursos` SET `operador` = ".$_SESSION["m80Usuario"]." WHERE `id`=".$id." LIMIT 1;";
+        $result = $this->query($query);
+        
         $query = "DELETE FROM recursos WHERE `id`=". $id . " LIMIT 1;";
         $result = $this->query($query);
         $this->desconectar();

@@ -130,9 +130,15 @@ class Musica extends Model {
 
     public function grava($request) {
         $this->conectar();
-        $query = "INSERT INTO musicas (`id` ,`nome` ,`id_banda` ,`duracao` ,`id_status`)
-                VALUES (NULL ,  '" . $request["inputDescricao"] . "',  '" . $request["inputBanda"] . "',  '" . $request["inputDuracao"] . "',  '1');";
+        $query = "select * from musicas where nome='".$request["inputDescricao"]."' AND id_banda='".$request["inputBanda"]."'";
         $result = $this->query($query);
+        if (is_array($result)) {
+            return "Já existe a música '".$request["inputDescricao"]."' para esta banda";
+        } else {
+            $query = "INSERT INTO musicas (`id` ,`nome` ,`id_banda` ,`duracao` ,`id_status`, `operador`)
+                    VALUES (NULL ,  '" . $request["inputDescricao"] . "',  '" . $request["inputBanda"] . "',  '" . $request["inputDuracao"] . "',  '1', '".$_SESSION["m80Usuario"]."');";
+            $result = $this->query($query);
+        }
         $this->desconectar();
     }
 
@@ -140,12 +146,22 @@ class Musica extends Model {
         $this->conectar();
         $query = "DELETE FROM musicas WHERE id='" . $id . "';";
         $result = $this->query($query);
+        
+        $query = "DELETE FROM votos WHERE id_musica=" . $id . ";";
+        $result = $this->query($query);
+        $query = "DELETE FROM instrumental WHERE idMusica=" . $id . ";";
+        $result = $this->query($query);
+        $query = "DELETE FROM recursos WHERE id_musica=" . $id . ";";
+        $result = $this->query($query);
+        $query = "DELETE FROM log WHERE id_objeto=" . $id . ";";
+        $result = $this->query($query);
+
         $this->desconectar();
     }
 
     public function gravaStatus($musica, $status) {
         $this->conectar();
-        $query = "UPDATE  musicas SET  `id_status` =  '" . $status . "' WHERE  `id` =" . $musica . ";";
+        $query = "UPDATE  musicas SET  `id_status` =  '" . $status . "', `operador` =  '" . $_SESSION["m80Usuario"] . "' WHERE  `id` =" . $musica . ";";
         $result = $this->query($query);
         $this->desconectar();
     }

@@ -23,7 +23,7 @@ class ListaMusicas extends Model {
             $query = "SELECT * FROM musicas WHERE id_status=5;";
         elseif (strpos($escopo, "&") > 0) {
             $res = explode("&", $escopo);
-            $query = "SELECT * FROM musicas WHERE id not in (select id_musica from showsmusicas where id_show=" . $res[1] . ") AND id_status=2;";
+            $query = "SELECT * FROM musicas WHERE id not in (select id_musica from showsmusicas where id_show=" . $res[1] . ") AND id_status=2 order by nome;";
         } elseif (strpos($escopo, "#") > 0) {
             $res = explode("#", $escopo);
             $query = "SELECT t1.* FROM musicas as t1 INNER JOIN showsmusicas as t2 ON t1.id=t2.id_musica WHERE t2.bloco=" . $res[0] . " AND t2.id_show=" . $res[1] . " ORDER BY t2.posicao;";

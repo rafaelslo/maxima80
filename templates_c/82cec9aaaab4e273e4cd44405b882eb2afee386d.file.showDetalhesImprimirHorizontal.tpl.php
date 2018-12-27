@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-12-05 17:00:37
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-11 10:12:48
          compiled from ".\Templates\shows\showDetalhesImprimirHorizontal.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:102625c06c0938e4cd7-50600916%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '82cec9aaaab4e273e4cd44405b882eb2afee386d' => 
     array (
       0 => '.\\Templates\\shows\\showDetalhesImprimirHorizontal.tpl',
-      1 => 1544036414,
+      1 => 1544036745,
       2 => 'file',
     ),
   ),
@@ -133,6 +133,7 @@ $_smarty_tpl->tpl_vars['inst']->_loop = true;
                     $(this).addClass("direita");
                 }
             });
+        window.print();            
         });
     </script>
 

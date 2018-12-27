@@ -20,6 +20,9 @@ if($modulo=="") {
     $instancia = new loginController();
     $instancia->telaLogin();
     die();
+} elseif($modulo=="webService") {
+    include_once("webService/index.php");
+    die();
 } else {
     if($acao=="") {
         die("Nenhuma acao definida");

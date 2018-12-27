@@ -105,11 +105,16 @@
                     minutosTotal -= 60;
                     horasTotal += 1;
                 }
-                total = horasTotal + ":" + minutosTotal;
+                total = pad(horasTotal,2) + ":" + pad(minutosTotal,2);
 
             });
             return total;
         }
+        function pad(num, size) {
+            var s = "000000000" + num;
+            return s.substr(s.length-size);
+        }
+        
     </script>
 
 

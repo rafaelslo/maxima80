@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-11-28 14:01:12
+<?php /* Smarty version Smarty-3.1.8, created on 2018-12-11 11:26:31
          compiled from ".\Templates\shows\showDetalhesImprimir.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1803956c73813096d16-55963944%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b3c793be74e7d6d91ec4138df3d6745bfcfb1eb2' => 
     array (
       0 => '.\\Templates\\shows\\showDetalhesImprimir.tpl',
-      1 => 1543420870,
+      1 => 1544534789,
       2 => 'file',
     ),
   ),
@@ -187,11 +187,16 @@ $_smarty_tpl->tpl_vars['inst']->_loop = true;
                     minutosTotal -= 60;
                     horasTotal += 1;
                 }
-                total = horasTotal + ":" + minutosTotal;
+                total = pad(horasTotal,2) + ":" + pad(minutosTotal,2);
 
             });
             return total;
         }
+        function pad(num, size) {
+            var s = "000000000" + num;
+            return s.substr(s.length-size);
+        }
+        
     </script>
 
 

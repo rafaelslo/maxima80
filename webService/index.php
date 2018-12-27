@@ -14,7 +14,7 @@ eval('$instancia = new ' . $separa[1] . '();');
 eval('$instancia->' . $acao. '('.$parametros.');');
 
 
-class call extends Model {
+class Call extends Model {
     private $id;
     private $userId;
     private $dateTime;
@@ -27,18 +27,16 @@ class call extends Model {
         $query = "INSERT INTO `appCalls` (`id`, `userId`, `datetime`, `type`, `latlng`, `description`) 
             VALUES (NULL, current_timestamp(), '.$userId.', '.$type.', '".$latlng."', '".$description."');";
         
-        $resultado = $this->query($query);
+        $resultado = $this->WSquery($query);
+        echo json_encode($resultado);
         $this->desconectar();                
     }
     
     public function getCalls() {
         $this->conectar();
         $query = "SELECT * FROM `appCalls`;";
-        
         $resultado = $this->query($query);
-        
         echo json_encode($resultado);
-        
         $this->desconectar();                
     }
     
@@ -107,6 +105,7 @@ class Answer extends Model {
             VALUES (NULL, '".$callId."', current_timestamp(), '".$mediaId."');";
         
         $resultado = $this->query($query);
+        echo json_encode($resultado);
         $this->desconectar();        
     }
     

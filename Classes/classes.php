@@ -57,6 +57,26 @@ class Model {
         }
     }
 
+        protected function WSquery($query) {
+        $resp = mysqli_query($this->conn, $query);
+
+        if (is_bool($resp)) {
+            return array('error'=>'0');
+        } else {
+            if (mysqli_num_rows($resp) == 0) {
+                return array('error'=>'1');
+            }
+            while ($row = mysqli_fetch_assoc($resp)) {
+                $linha = Array();
+                foreach ($row as $chave => $valor) {
+                    $linha[$chave] = $valor;
+                }
+                $retorno[] = $linha;
+            }
+            return $retorno;
+        }
+    }
+    
     protected function exec($query) {
         $_SESSION["queries"].="<BR>----exec:" . $query;
         $resp = mysqli_query($this->conn, $query);

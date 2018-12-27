@@ -11,7 +11,7 @@ for($i=2; $i<count($separa); $i++) {
 }
 
 eval('$instancia = new ' . $separa[1] . '();');
-eval('$instancia->' . $acao. '('.$parametros.');');
+eval('$instancia->' . $separa[2]. '('.$parametros.');');
 
 
 class Call extends Model {

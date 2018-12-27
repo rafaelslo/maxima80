@@ -35,7 +35,7 @@ class Call extends Model {
     public function getCalls() {
         $this->conectar();
         $query = "SELECT * FROM `appCalls`;";
-        $resultado = $this->query($query);
+        $resultado = $this->WSquery($query);
         echo json_encode($resultado);
         $this->desconectar();                
     }
@@ -104,7 +104,7 @@ class Answer extends Model {
         $query = "INSERT INTO `appAnswers` (`id`, `callId`, `datetime`, `mediaId`) 
             VALUES (NULL, '".$callId."', current_timestamp(), '".$mediaId."');";
         
-        $resultado = $this->query($query);
+        $resultado = $this->WSquery($query);
         echo json_encode($resultado);
         $this->desconectar();        
     }

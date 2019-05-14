@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2016-01-21 09:35:03
+<?php /* Smarty version Smarty-3.1.8, created on 2019-05-14 16:03:56
          compiled from ".\Templates\musicas\musicasAcoes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1321756a0c2674e3db2-07799054%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '798de24c334eb3cdf7ee79dfd81772a5dbe4e426' => 
     array (
       0 => '.\\Templates\\musicas\\musicasAcoes.tpl',
-      1 => 1453220557,
+      1 => 1557860614,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_56a0c2677ea7b2_63813697',
   'variables' => 
   array (
     'acao' => 0,
     'id' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_56a0c2677ea7b2_63813697',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_56a0c2677ea7b2_63813697')) {function content_56a0c2677ea7b2_63813697($_smarty_tpl) {?>
 <?php if ($_smarty_tpl->tpl_vars['acao']->value=='Proposta'){?>
@@ -41,6 +41,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 /musicas/status/<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 1" role="button">Retornar para Proposta</a>
 <?php }elseif($_smarty_tpl->tpl_vars['acao']->value=='Aprovada'){?>
+    <a class="btn btn-warning" href= "<?php echo $_SESSION['baseURL'];?>
+/musicas/status/<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+1" role="button">Retornar para Proposta</a>
     <a class="btn btn-info" href= "<?php echo $_SESSION['baseURL'];?>
 /musicas/status/<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 5" role="button">Iniciar Preparação</a>

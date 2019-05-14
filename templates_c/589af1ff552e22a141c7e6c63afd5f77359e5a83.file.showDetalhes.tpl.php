@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2019-05-14 15:40:48
+<?php /* Smarty version Smarty-3.1.8, created on 2019-05-14 16:15:09
          compiled from ".\Templates\shows\showDetalhes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:285156a0ce5c6c0065-55550148%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '589af1ff552e22a141c7e6c63afd5f77359e5a83' => 
     array (
       0 => '.\\Templates\\shows\\showDetalhes.tpl',
-      1 => 1557859162,
+      1 => 1557861306,
       2 => 'file',
     ),
   ),
@@ -42,11 +42,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
             <small><?php echo $_smarty_tpl->tpl_vars['show']->value->getData();?>
 </small>
-            <SPAM><a class="btn btn-danger pull-right" style="" href= "<?php echo $_SESSION['baseURL'];?>
+            <a class="btn btn-danger" style="" href= "<?php echo $_SESSION['baseURL'];?>
 /shows/apagarShow/<?php echo $_smarty_tpl->tpl_vars['show']->value->getId();?>
-" role="button">Apagar Show</a> </SPAM>
+" role="button">Apagar Show</a>
+
         </h1>
-        <BR>
         <ol class="breadcrumb" id="<?php echo $_smarty_tpl->tpl_vars['show']->value->getId();?>
 ">
             <li><a href="#"><i class="fa fa-users"></i> Show</a></li>
@@ -57,6 +57,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <section class="content">
         <!-- Your Page Content Here -->
         <div class="row">
+
             <div class="col-md-3">
                 <div class="box box-solid box-success">
                     <div class="box-header with-border">Musicas Prontas </div>

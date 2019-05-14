@@ -38,11 +38,8 @@ class musicasController extends Controller {
         
         $integrantes = new ListaIntegrantes();
         $integrantes->carrega("Ativo");
-        
-        $shows = new ListaShows();
-        $shows->carregaOcorrencias($musica->getId());
                
-        $this->view->exibirDetalhesMusica($musica,$integrantes->getIntegrantes(),$shows->getShows());
+        $this->view->exibirDetalhesMusica($musica,$integrantes->getIntegrantes());
     }
 
     function votar() {

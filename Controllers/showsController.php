@@ -105,7 +105,7 @@ class showsController extends Controller {
         $bis->carrega("3#" . $id);
         $show = new show();
         $show->carrega($id);
-        $this->view->imprimirDetalhesShowHorizontalPequeno($show, array_merge($bloco1->getMusicas(),$bloco2->getMusicas(),$bis->getMusicas()));
+        $this->view->imprimirDetalhesShowHorizontalPequeno($show, $bloco1->getMusicas(), $bloco2->getMusicas(), $bis->getMusicas());
     }
 
     

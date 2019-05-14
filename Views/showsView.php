@@ -33,9 +33,11 @@ class showsView extends View {
         $this->atribuirValor("musicas", $musicas);
         $this->mostrarNaTela('showDetalhesImprimirHorizontal.tpl');
     }
-    public function imprimirDetalhesShowHorizontalPequeno($show, $musicas) {
+    public function imprimirDetalhesShowHorizontalPequeno($show, $bloco1, $bloco2, $bis) {
         $this->atribuirValor("show", $show);
-        $this->atribuirValor("musicas", $musicas);
+        $this->atribuirValor("bloco1", $bloco1);
+        $this->atribuirValor("bloco2", $bloco2);
+        $this->atribuirValor("bis", $bis);
         $this->mostrarNaTela('showDetalhesImprimirHorizontalPequeno.tpl');
     }
 }

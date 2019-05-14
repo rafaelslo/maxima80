@@ -7,9 +7,9 @@
         <h1>
             {$show->getLocal()}
             <small>{$show->getData()}</small>
-            <SPAM><a class="btn btn-danger pull-right" style="" href= "{$smarty.session.baseURL}/shows/apagarShow/{$show->getId()}" role="button">Apagar Show</a> </SPAM>
+            <a class="btn btn-danger" style="" href= "{$smarty.session.baseURL}/shows/apagarShow/{$show->getId()}" role="button">Apagar Show</a>
+
         </h1>
-        <BR>
         <ol class="breadcrumb" id="{$show->getId()}">
             <li><a href="#"><i class="fa fa-users"></i> Show</a></li>
             <li><a href="#">Detalhes</a></li>
@@ -19,6 +19,7 @@
     <section class="content">
         <!-- Your Page Content Here -->
         <div class="row">
+
             <div class="col-md-3">
                 <div class="box box-solid box-success">
                     <div class="box-header with-border">Musicas Prontas </div>

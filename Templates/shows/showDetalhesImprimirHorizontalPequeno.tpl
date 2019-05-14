@@ -60,15 +60,37 @@
                 <small>{$show->getData()}</small>
             </h2>
                 <ul id="sortable1">
-                    {foreach $musicas as $musica}
-                        <li class="list-group-item padrao3" id="{$musica->getId()}">
-                            <!-- <span class="badge">{$musica->getDuracao()}</span> -->
-                            {foreach $musica->getInstrumental()->getInstrumental() as $inst}
+                    {foreach $bloco1 as $bloco}
+                        <li class="list-group-item padrao3" id="{$bloco->getId()}">
+                            <!-- <span class="badge">{$bloco->getDuracao()}</span> -->
+                            {foreach $bloco->getInstrumental()->getInstrumental() as $inst}
                                 <img height="30" width="30" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getIntegrante()->getNome()}">&nbsp;
                             {/foreach}
-                            {$musica->getNome()}
+                            {$bloco->getNome()}
                         </li>
                     {/foreach}                        
+                    <li class="list-group-item padrao3"><hr style="border-top: 1px solid #8c8b8b"></hr></li>                            
+                    {foreach $bloco2 as $bloco}
+                        <li class="list-group-item padrao3" id="{$bloco->getId()}">
+                            <!-- <span class="badge">{$bloco->getDuracao()}</span> -->
+                            {foreach $bloco->getInstrumental()->getInstrumental() as $inst}
+                                <img height="30" width="30" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getIntegrante()->getNome()}">&nbsp;
+                            {/foreach}
+                            {$bloco->getNome()}
+                        </li>
+                    {/foreach}                        
+                    <li class="list-group-item padrao3"><hr style="border-top: 1px solid #8c8b8b"></hr></li>                            
+                    {foreach $bis as $bloco}
+                        <li class="list-group-item padrao3" id="{$bloco->getId()}">
+                            <!-- <span class="badge">{$bloco->getDuracao()}</span> -->
+                            {foreach $bloco->getInstrumental()->getInstrumental() as $inst}
+                                <img height="30" width="30" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getIntegrante()->getNome()}">&nbsp;
+                            {/foreach}
+                            {$bloco->getNome()}
+                        </li>
+                    {/foreach}                        
+
+
                 </ul>
         </div><!-- /.content-wrapper -->                       
 

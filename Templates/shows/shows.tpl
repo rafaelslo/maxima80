@@ -18,6 +18,12 @@
 
         <!-- Your Page Content Here -->
         <div class="box">
+            {if $erro neq ''}
+                <div class="alert alert-danger" role="alert">
+                    {$erro}
+                </div>
+            {/if}
+            
             <table id="tabela1" class="table table-bordered table-striped">
                 <thead>
                     <tr>

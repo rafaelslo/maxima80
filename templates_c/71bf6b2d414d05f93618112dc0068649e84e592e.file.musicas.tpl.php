@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-12-07 17:26:25
+<?php /* Smarty version Smarty-3.1.8, created on 2019-05-14 14:27:59
          compiled from ".\Templates\musicas\musicas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2818856a0bf36a61a29-22370553%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '71bf6b2d414d05f93618112dc0068649e84e592e' => 
     array (
       0 => '.\\Templates\\musicas\\musicas.tpl',
-      1 => 1544210767,
+      1 => 1557854875,
       2 => 'file',
     ),
   ),
@@ -57,6 +57,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <TH> Banda </TH>
                         <TH> Duração </TH>
                         <TH> Recursos </TH>
+                        <TH> Shows </TH>
                         <TH> Status </TH>
                     </tr>
                 </thead>
@@ -78,6 +79,8 @@ $_smarty_tpl->tpl_vars['musica']->_loop = true;
                             <TD><?php echo $_smarty_tpl->tpl_vars['musica']->value->getDuracao();?>
  </TD>
                             <TD><?php echo $_smarty_tpl->tpl_vars['musica']->value->getRecursos()->countRecursos();?>
+ </TD>
+                            <TD><?php echo count($_smarty_tpl->tpl_vars['musica']->value->getShows());?>
  </TD>
                             <TD class="<?php echo $_smarty_tpl->tpl_vars['musica']->value->getStatus()->getCor();?>
 "><?php echo $_smarty_tpl->tpl_vars['musica']->value->getStatus()->getNome();?>

@@ -89,7 +89,23 @@ class Show extends Model {
         $result = $this->query($query);
         $this->desconectar();
     }
-
+    
+    public function apaga($id) {
+        $this->conectar();
+        $query = "SELECT count(*) FROM showsmusicas WHERE id_show=" . $id . ";";
+        $result = $this->query($query);
+        
+        if($result[0][0]>0) {
+            $_SESSION["erro"]="Não pode apagar este show";
+        } else {
+            $query = "DELETE FROM showsmusicas WHERE id_show=" . $id . ";";
+            $resultado = $this->query($query);
+            $query = "DELETE FROM shows WHERE id=" . $id . ";";
+            $resultado = $this->query($query);
+        }
+        $this->desconectar();    
+    }
+    
     public function gravaSetlist($show, $blocoantigo, $bloconovo, $musica, $posicaoinicial, $posicaofinal) {
         if ($bloconovo == "4") { //movimentação para a lista de músicas prontas, ie,retirada do show
             $this->conectar();

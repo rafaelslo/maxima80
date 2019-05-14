@@ -58,7 +58,7 @@
         </div>
                             
         <div class="box box-primary">
-            <div class="box-header with-border">Executada em Shows</div>
+            <div class="box-header with-border">Executada {$musica->getShows()|@count} vezes em Shows</div>
             <TABLE Class="table">
                 <THEAD>
                     <tr>
@@ -69,12 +69,12 @@
                 <TFOOT>
                 </TFOOT>
                 <TBODY>
-                    <TR>
-                        {foreach $shows as $show}
+                    {foreach $musica->getShows() as $show}
+                        <TR>
                             <TD><a href="{$smarty.session.baseURL}/shows/detalha/{$show->getId()}">{$show->getLocal()}</a></TD>
                             <TD class="">{$show->getData()} </TD>
-                        {/foreach}
-                    </TR>
+                        </TR>
+                    {/foreach}
                 </TBODY>
             </TABLE>
         </div>                            

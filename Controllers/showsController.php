@@ -21,7 +21,7 @@ class showsController extends Controller {
     function main() {
         $shows = new ListaShows();
         $shows->carrega();
-        $this->view->exibirListaShows($shows->getShows());
+        $this->view->exibirListaShows($shows->getShows(),$erro);
     }
 
     function formIncluirShow() {
@@ -33,7 +33,17 @@ class showsController extends Controller {
         $resultado = $shows->grava($_REQUEST);
         $shows = new ListaShows();
         $shows->carrega();
-        $this->view->exibirListaShows($shows->getShows());
+        $this->view->exibirListaShows($shows->getShows(),$erro);
+    }
+    
+    function apagarShow($idShow) {
+        $show = new Show();
+        $show->apaga($idShow);
+        $shows = new ListaShows();
+        $shows->carrega();
+        $erro = $_SESSION["erro"];
+        $_SESSION["erro"] = "";
+        $this->view->exibirListaShows($shows->getShows(),$erro); 
     }
 
     function detalha($id) {
@@ -85,6 +95,19 @@ class showsController extends Controller {
         $show->carrega($id);
         $this->view->imprimirDetalhesShowHorizontal($show, array_merge($bloco1->getMusicas(),$bloco2->getMusicas(),$bis->getMusicas()));
     }
+
+        function imprimirHorizontalPequeno($id) {
+        $bloco1 = new ListaMusicas();
+        $bloco1->carrega("1#" . $id);
+        $bloco2 = new ListaMusicas();
+        $bloco2->carrega("2#" . $id);
+        $bis = new ListaMusicas();
+        $bis->carrega("3#" . $id);
+        $show = new show();
+        $show->carrega($id);
+        $this->view->imprimirDetalhesShowHorizontalPequeno($show, array_merge($bloco1->getMusicas(),$bloco2->getMusicas(),$bis->getMusicas()));
+    }
+
     
     function gravaSetlist() {
         if($_REQUEST["id_show"]!="") {

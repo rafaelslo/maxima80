@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-11-28 14:27:23
+<?php /* Smarty version Smarty-3.1.8, created on 2019-05-14 15:36:19
          compiled from ".\Templates\shows\shows.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1853656a0c803ed51f2-63702949%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '930e14fedb9a3f81e5c7e504fb5e7e78864fcd9f' => 
     array (
       0 => '.\\Templates\\shows\\shows.tpl',
-      1 => 1543422440,
+      1 => 1557858968,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_56a0c804124983_81022906',
   'variables' => 
   array (
+    'erro' => 0,
     'shows' => 0,
     'show' => 0,
   ),
@@ -45,6 +46,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
         <!-- Your Page Content Here -->
         <div class="box">
+            <?php if ($_smarty_tpl->tpl_vars['erro']->value!=''){?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $_smarty_tpl->tpl_vars['erro']->value;?>
+
+                </div>
+            <?php }?>
+            
             <table id="tabela1" class="table table-bordered table-striped">
                 <thead>
                     <tr>

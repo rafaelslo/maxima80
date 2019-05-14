@@ -2,6 +2,7 @@
 
 require_once("./Views/musicasView.php");
 require_once("./Models/musicasModel.php");
+require_once("./Models/showsModel.php");
 require_once("./Models/bandasModel.php");
 
 /**

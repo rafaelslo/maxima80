@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-12-11 15:04:59
+<?php /* Smarty version Smarty-3.1.8, created on 2019-05-14 15:40:48
          compiled from ".\Templates\shows\showDetalhes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:285156a0ce5c6c0065-55550148%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '589af1ff552e22a141c7e6c63afd5f77359e5a83' => 
     array (
       0 => '.\\Templates\\shows\\showDetalhes.tpl',
-      1 => 1544547691,
+      1 => 1557859162,
       2 => 'file',
     ),
   ),
@@ -42,7 +42,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
             <small><?php echo $_smarty_tpl->tpl_vars['show']->value->getData();?>
 </small>
+            <SPAM><a class="btn btn-danger pull-right" style="" href= "<?php echo $_SESSION['baseURL'];?>
+/shows/apagarShow/<?php echo $_smarty_tpl->tpl_vars['show']->value->getId();?>
+" role="button">Apagar Show</a> </SPAM>
         </h1>
+        <BR>
         <ol class="breadcrumb" id="<?php echo $_smarty_tpl->tpl_vars['show']->value->getId();?>
 ">
             <li><a href="#"><i class="fa fa-users"></i> Show</a></li>
@@ -64,6 +68,7 @@ $_smarty_tpl->tpl_vars['pronta']->_loop = true;
 ?>
                             <li class="list-group-item list-group-item-success" style="padding: 5px 15px !important;" id="<?php echo $_smarty_tpl->tpl_vars['pronta']->value->getId();?>
 "><span class="badge"><?php echo $_smarty_tpl->tpl_vars['pronta']->value->getDuracao();?>
+</span><span class="bg-primary label label-primary float-left"><?php echo count($_smarty_tpl->tpl_vars['pronta']->value->getShows());?>
 </span> 
                                 <?php  $_smarty_tpl->tpl_vars['inst'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['inst']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['pronta']->value->getInstrumental()->getInstrumental(); if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -186,6 +191,9 @@ $_smarty_tpl->tpl_vars['inst']->_loop = true;
                 <a class="btn btn-default btn-block" href= "<?php echo $_SESSION['baseURL'];?>
 /shows/imprimirHorizontal/<?php echo $_smarty_tpl->tpl_vars['show']->value->getId();?>
 " role="button" target="_blank">Imprimir Padrão 2</a>
+                <a class="btn btn-default btn-block" href= "<?php echo $_SESSION['baseURL'];?>
+/shows/imprimirHorizontalPequeno/<?php echo $_smarty_tpl->tpl_vars['show']->value->getId();?>
+" role="button" target="_blank">Imprimir Padrão 3</a>
             </div>  
         </div>
 

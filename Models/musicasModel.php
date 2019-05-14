@@ -6,6 +6,7 @@ require_once("./Models/statusModel.php");
 require_once("./Models/votosModel.php");
 require_once("./Models/instrumentalModel.php");
 require_once("./Models/recursosModel.php");
+require_once("./Models/showsModel.php");
 
 class ListaMusicas extends Model {
 
@@ -58,6 +59,9 @@ class ListaMusicas extends Model {
                 $recursos = new ListaRecursos();
                 $recursos->carrega($result["id"]);
                 $musica->setRecursos($recursos);
+                $shows = new ListaShows();
+                $shows->carregaOcorrencias($result["id"]);
+                $musica->setShows($shows->getShows());
 
                 $this->addMusica($musica);
             }
@@ -95,6 +99,7 @@ class Musica extends Model {
     private $status;
     private $votos;
     private $recursos;
+    private $shows;
     private $instrumental;
 
     public function carrega($id) {
@@ -126,6 +131,10 @@ class Musica extends Model {
         $recursos = new ListaRecursos();
         $recursos->carrega($result[0]["id"]);
         $this->setRecursos($recursos->getRecursos());
+        $shows = new ListaShows();
+        $shows->carregaOcorrencias($result[0]["id"]);
+        $this->setShows($shows->getShows());
+
     }
 
     public function grava($request) {
@@ -228,6 +237,14 @@ class Musica extends Model {
 
     public function setRecursos($recursos) {
         $this->recursos = $recursos;
+    }
+    
+    public function getShows() {
+        return $this->shows;
+    }
+
+    public function setShows($shows) {
+        $this->shows = $shows;
     }
 
     public function getInstrumental() {

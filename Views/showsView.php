@@ -2,8 +2,9 @@
 
 class showsView extends View {
 
-    public function exibirListaShows($shows) {
+    public function exibirListaShows($shows,$erro) {
         $this->atribuirValor("shows", $shows);
+        $this->atribuirValor("erro", $erro);
         $this->mostrarNaTela('shows.tpl');
     }
 
@@ -31,6 +32,11 @@ class showsView extends View {
         $this->atribuirValor("show", $show);
         $this->atribuirValor("musicas", $musicas);
         $this->mostrarNaTela('showDetalhesImprimirHorizontal.tpl');
+    }
+    public function imprimirDetalhesShowHorizontalPequeno($show, $musicas) {
+        $this->atribuirValor("show", $show);
+        $this->atribuirValor("musicas", $musicas);
+        $this->mostrarNaTela('showDetalhesImprimirHorizontalPequeno.tpl');
     }
 }
 

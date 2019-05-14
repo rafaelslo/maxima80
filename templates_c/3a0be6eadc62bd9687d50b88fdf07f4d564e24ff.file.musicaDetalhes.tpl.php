@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-12-10 09:44:48
+<?php /* Smarty version Smarty-3.1.8, created on 2019-05-14 14:29:27
          compiled from ".\Templates\musicas\musicaDetalhes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2048856a0c267193370-21721737%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3a0be6eadc62bd9687d50b88fdf07f4d564e24ff' => 
     array (
       0 => '.\\Templates\\musicas\\musicaDetalhes.tpl',
-      1 => 1544442284,
+      1 => 1557854836,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'musica' => 0,
     'inst' => 0,
+    'show' => 0,
     'integrantes' => 0,
     'integ' => 0,
     'voto' => 0,
@@ -107,6 +108,37 @@ $_smarty_tpl->tpl_vars['inst']->_loop = true;
                 </TBODY>
             </TABLE>
         </div>
+                            
+        <div class="box box-primary">
+            <div class="box-header with-border">Executada <?php echo count($_smarty_tpl->tpl_vars['musica']->value->getShows());?>
+ vezes em Shows</div>
+            <TABLE Class="table">
+                <THEAD>
+                    <tr>
+                        <TH>Local</TH>
+                        <TH>Data</TH>                        
+                    </tr>                
+                </THEAD>
+                <TFOOT>
+                </TFOOT>
+                <TBODY>
+                    <?php  $_smarty_tpl->tpl_vars['show'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['show']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['musica']->value->getShows(); if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['show']->key => $_smarty_tpl->tpl_vars['show']->value){
+$_smarty_tpl->tpl_vars['show']->_loop = true;
+?>
+                        <TR>
+                            <TD><a href="<?php echo $_SESSION['baseURL'];?>
+/shows/detalha/<?php echo $_smarty_tpl->tpl_vars['show']->value->getId();?>
+"><?php echo $_smarty_tpl->tpl_vars['show']->value->getLocal();?>
+</a></TD>
+                            <TD class=""><?php echo $_smarty_tpl->tpl_vars['show']->value->getData();?>
+ </TD>
+                        </TR>
+                    <?php } ?>
+                </TBODY>
+            </TABLE>
+        </div>                            
 
         <div class="box box-primary">
             <div class="box-header with-border">Votação</div>

@@ -7,7 +7,9 @@
         <h1>
             {$show->getLocal()}
             <small>{$show->getData()}</small>
+            <SPAM><a class="btn btn-danger pull-right" style="" href= "{$smarty.session.baseURL}/shows/apagarShow/{$show->getId()}" role="button">Apagar Show</a> </SPAM>
         </h1>
+        <BR>
         <ol class="breadcrumb" id="{$show->getId()}">
             <li><a href="#"><i class="fa fa-users"></i> Show</a></li>
             <li><a href="#">Detalhes</a></li>
@@ -22,7 +24,7 @@
                     <div class="box-header with-border">Musicas Prontas </div>
                     <ul id="sortable4" class="connectedSortable list-group">
                         {foreach $prontas as $pronta}
-                            <li class="list-group-item list-group-item-success" style="padding: 5px 15px !important;" id="{$pronta->getId()}"><span class="badge">{$pronta->getDuracao()}</span> 
+                            <li class="list-group-item list-group-item-success" style="padding: 5px 15px !important;" id="{$pronta->getId()}"><span class="badge">{$pronta->getDuracao()}</span><span class="bg-primary label label-primary float-left">{$pronta->getShows()|@count}</span> 
                                 {foreach $pronta->getInstrumental()->getInstrumental() as $inst}
                                     <img height="30" width="30" src="{$smarty.session.baseURL}/Templates/img/{$inst->getInstrumento()->getIcone()}" title="{$inst->getIntegrante()->getNome()}">&nbsp;
                                 {/foreach}
@@ -88,6 +90,7 @@
                 <BR>
                 <a class="btn btn-default btn-block" href= "{$smarty.session.baseURL}/shows/imprimir/{$show->getId()}" role="button" target="_blank">Imprimir Padrão 1</a>
                 <a class="btn btn-default btn-block" href= "{$smarty.session.baseURL}/shows/imprimirHorizontal/{$show->getId()}" role="button" target="_blank">Imprimir Padrão 2</a>
+                <a class="btn btn-default btn-block" href= "{$smarty.session.baseURL}/shows/imprimirHorizontalPequeno/{$show->getId()}" role="button" target="_blank">Imprimir Padrão 3</a>
             </div>  
         </div>
 

@@ -28,6 +28,7 @@
                         <TH> Banda </TH>
                         <TH> Duração </TH>
                         <TH> Recursos </TH>
+                        <TH> Shows </TH>
                         <TH> Status </TH>
                     </tr>
                 </thead>
@@ -39,6 +40,7 @@
                             <TD>{$musica->getBanda()} </TD>
                             <TD>{$musica->getDuracao()} </TD>
                             <TD>{$musica->getRecursos()->countRecursos()} </TD>
+                            <TD>{$musica->getShows()|@count} </TD>
                             <TD class="{$musica->getStatus()->getCor()}">{$musica->getStatus()->getNome()} </TD>
                         </TR>
                     {/foreach}

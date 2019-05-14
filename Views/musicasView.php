@@ -19,7 +19,7 @@ class musicasView extends View {
         $this->mostrarNaTela('musicasVotar.tpl');
     }
 
-    public function exibirDetalhesMusica($musica,$integrantes) {
+    public function exibirDetalhesMusica($musica,$integrantes,$shows) {
         $this->atribuirValor("musica", $musica);
         $this->atribuirValor("integrantes", $integrantes);
         $this->atribuirValor("shows", $shows);

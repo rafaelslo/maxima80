@@ -23,6 +23,27 @@ class ListaShows extends Model {
             }
         }
     }
+    
+    public function carregaOcorrencias($idMusica) {
+        $this->conectar();
+        $query = "SELECT B.id, B.local, B.data
+            FROM showsmusicas A 
+            LEFT JOIN shows B on A.id_show=B.id
+            WHERE id_musica=" . $idMusica . "
+            ORDER BY data DESC;";
+        $resultado = $this->query($query);
+        $this->desconectar();
+
+        if (!is_bool($resultado)) {
+            foreach ($resultado as $result) {
+                $show = new Show();
+                $show->setId($result["id"]);
+                $show->setLocal($result["local"]);
+                $show->setData($result["data"]);
+                $this->addShow($show);
+            }
+        }        
+    }
 
     public function getShows() {
         return $this->shows;

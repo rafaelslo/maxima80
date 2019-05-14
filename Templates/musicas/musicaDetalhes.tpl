@@ -56,6 +56,28 @@
                 </TBODY>
             </TABLE>
         </div>
+                            
+        <div class="box box-primary">
+            <div class="box-header with-border">Executada em Shows</div>
+            <TABLE Class="table">
+                <THEAD>
+                    <tr>
+                        <TH>Local</TH>
+                        <TH>Data</TH>                        
+                    </tr>                
+                </THEAD>
+                <TFOOT>
+                </TFOOT>
+                <TBODY>
+                    <TR>
+                        {foreach $shows as $show}
+                            <TD><a href="{$smarty.session.baseURL}/shows/detalha/{$show->getId()}">{$show->getLocal()}</a></TD>
+                            <TD class="">{$show->getData()} </TD>
+                        {/foreach}
+                    </TR>
+                </TBODY>
+            </TABLE>
+        </div>                            
 
         <div class="box box-primary">
             <div class="box-header with-border">Votação</div>

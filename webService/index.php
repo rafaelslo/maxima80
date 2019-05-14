@@ -3,9 +3,9 @@ require_once("./Classes/classes.php");
 
 $separa=explode("/",$_REQUEST["modulo"]);
 $parametros='';
-for($i=2; $i<count($separa); $i++) {
-    if($i>2) {
-        $parametros .= $separa[$i].",";
+for($i=3; $i<count($separa); $i++) {
+    if($i>3) {
+        $parametros .= ",";
     }
     $parametros .= $separa[$i];
 }
@@ -24,8 +24,7 @@ class Call extends Model {
     
     public function newCall ($userId,$type,$latlng,$description) {
         $this->conectar();
-        $query = "INSERT INTO `appCalls` (`id`, `userId`, `datetime`, `type`, `latlng`, `description`) 
-            VALUES (NULL, current_timestamp(), '.$userId.', '.$type.', '".$latlng."', '".$description."');";
+        $query = "INSERT INTO `appCalls` (`id`, `userId`, `datetime`, `type`, `latlng`, `description`) VALUES (NULL, ".$userId.", current_timestamp(), ".$type.", '".$latlng."', '".$description."');";
         
         $resultado = $this->WSquery($query);
         echo json_encode($resultado);

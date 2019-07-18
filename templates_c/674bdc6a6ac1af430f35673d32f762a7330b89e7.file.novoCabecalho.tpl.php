@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-12-04 16:39:59
+<?php /* Smarty version Smarty-3.1.8, created on 2019-07-18 21:23:57
          compiled from ".\Templates\novoCabecalho.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24073569fd65cbdaa97-55393489%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '674bdc6a6ac1af430f35673d32f762a7330b89e7' => 
     array (
       0 => '.\\Templates\\novoCabecalho.tpl',
-      1 => 1543948775,
+      1 => 1563474137,
       2 => 'file',
     ),
   ),

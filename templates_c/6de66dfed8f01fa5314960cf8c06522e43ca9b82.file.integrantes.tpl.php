@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-12-04 16:42:30
+<?php /* Smarty version Smarty-3.1.8, created on 2019-07-18 21:24:04
          compiled from ".\Templates\integrantes\integrantes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:241695c06ca96d07fe9-47611321%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6de66dfed8f01fa5314960cf8c06522e43ca9b82' => 
     array (
       0 => '.\\Templates\\integrantes\\integrantes.tpl',
-      1 => 1543333252,
+      1 => 1563474135,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_5c06ca97055587_02156690',
   'variables' => 
   array (
     'integrantes' => 0,
     'integrante' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_5c06ca97055587_02156690',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5c06ca97055587_02156690')) {function content_5c06ca97055587_02156690($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("novoCabecalho.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('titulo'=>"Lista de Bandas",'integrantesActive'=>"active"), 0);?>
 

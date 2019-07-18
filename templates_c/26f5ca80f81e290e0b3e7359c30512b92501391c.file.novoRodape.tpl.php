@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-11-28 14:26:33
+<?php /* Smarty version Smarty-3.1.8, created on 2019-07-18 21:35:49
          compiled from ".\Templates\novoRodape.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4655569fd65d2a5038-76770967%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '26f5ca80f81e290e0b3e7359c30512b92501391c' => 
     array (
       0 => '.\\Templates\\novoRodape.tpl',
-      1 => 1543422388,
+      1 => 1563478543,
       2 => 'file',
     ),
   ),
@@ -29,6 +29,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <!-- jQuery UI -->
 <script src="<?php echo $_SESSION['baseURL'];?>
 /Templates/includes/plugins/jQueryUI/jquery-ui.min.js" type="text/javascript"></script>
+<script src="<?php echo $_SESSION['baseURL'];?>
+/Templates/includes/plugins/jQueryUI/jquery.ui.touch-punch.min.js"></script>
 <!-- Bootstrap 3.3.2 JS -->
 <script src="<?php echo $_SESSION['baseURL'];?>
 /Templates/includes/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

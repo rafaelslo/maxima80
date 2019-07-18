@@ -13,7 +13,7 @@ class Model {
     protected function conectar() {
         //TODO: acertar conexão em produção
         if ($_SERVER["SERVER_NAME"] == "localhost") {
-            $this->conn = @mysqli_connect("10.60.145.1", "root", "");
+            $this->conn = @mysqli_connect("10.60.148.35", "root", "");
             mysqli_select_db($this->conn, "maxima80");
         } else {
             $this->conn = @mysqli_connect("mysql.hostinger.com", "u990571683_m80", "0hybOzRXM2dP");

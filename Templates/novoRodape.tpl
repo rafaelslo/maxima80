@@ -6,6 +6,7 @@
 <script src="{$smarty.session.baseURL}/Templates/includes/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 <!-- jQuery UI -->
 <script src="{$smarty.session.baseURL}/Templates/includes/plugins/jQueryUI/jquery-ui.min.js" type="text/javascript"></script>
+<script src="{$smarty.session.baseURL}/Templates/includes/plugins/jQueryUI/jquery.ui.touch-punch.min.js"></script>
 <!-- Bootstrap 3.3.2 JS -->
 <script src="{$smarty.session.baseURL}/Templates/includes/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- AdminLTE App -->

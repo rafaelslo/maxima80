@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-12-07 17:20:56
+<?php /* Smarty version Smarty-3.1.8, created on 2019-07-18 21:49:23
          compiled from ".\Templates\bandas\bandas.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:669356a0c23ea32fe4-07750270%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '78cb0cdc4659b3edf9528ff931dadde08d6eb464' => 
     array (
       0 => '.\\Templates\\bandas\\bandas.tpl',
-      1 => 1544210454,
+      1 => 1563474137,
       2 => 'file',
     ),
   ),

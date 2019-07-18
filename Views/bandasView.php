@@ -2,7 +2,7 @@
 
 class bandasView extends View {
 
-    public function exibirListaBandas($resultado,$bandas) {
+    public function exibirListaBandas($bandas,$resultado = '') {
         $this->atribuirValor("mensagem", $resultado);
         $this->atribuirValor("bandas", $bandas);
         $this->mostrarNaTela('bandas.tpl');
